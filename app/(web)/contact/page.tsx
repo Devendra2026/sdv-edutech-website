@@ -23,12 +23,13 @@ export default function ContactPage() {
   }
 
   const contactInfo = [
-    { icon: <Phone className='w-5 h-5' />, label: 'Phone', value: '+91 98765 43210', href: 'tel:+919876543210' },
+    { icon: <Phone className='w-5 h-5' />, label: 'Phone', value: '+91 90278 11488', href: 'tel:+919027811488' },
+    
     {
       icon: <Mail className='w-5 h-5' />,
       label: 'Email',
-      value: 'info@sdvedutech.com',
-      href: 'mailto:info@sdvedutech.com',
+      value: 'info@sdvedutech.in',
+      href: 'mailto:info@sdvedutech.in',
     },
     {
       icon: <MapPin className='w-5 h-5' />,
@@ -36,7 +37,7 @@ export default function ContactPage() {
       value: 'Agra, Uttar Pradesh',
       href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(OFFICE_ADDRESS)}`,
     },
-    { icon: <Clock className='w-5 h-5' />, label: 'Hours', value: 'Mon–Fri, 9 AM – 6 PM IST', href: '#' },
+    { icon: <Clock className='w-5 h-5' />, label: 'Hours', value: 'Mon–Sat, 10 AM – 6 PM IST', href: '#' },
   ]
 
   const inputClass =

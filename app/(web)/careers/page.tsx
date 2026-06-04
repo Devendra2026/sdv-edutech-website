@@ -9,11 +9,7 @@ import Link from 'next/link'
 
 const jobs = [
   { title: 'Senior Software Engineer', location: 'New Delhi', salary: '₹15–25 LPA', dept: 'Engineering' },
-  { title: 'GIS Specialist', location: 'Mumbai', salary: '₹12–18 LPA', dept: 'Geospatial' },
-  { title: 'Project Manager', location: 'Bangalore', salary: '₹14–22 LPA', dept: 'Delivery' },
-  { title: 'Data Analyst', location: 'Hyderabad', salary: '₹10–16 LPA', dept: 'Analytics' },
-  { title: 'Solutions Architect', location: 'New Delhi', salary: '₹16–26 LPA', dept: 'Engineering' },
-  { title: 'QA Engineer', location: 'Pune', salary: '₹8–14 LPA', dept: 'Quality' },
+  
 ]
 
 const benefits = [
@@ -44,7 +40,7 @@ export default function CareersPage() {
         eyebrow='Join the team'
         title='Build Your Career with Us'
         highlight='Career'
-        description="Join SDV EDUTECH and help transform enterprises through innovative IT and geospatial technology. We're hiring across engineering, GIS, and delivery."
+        description="Join Sdv Edutech Private Limited and help transform enterprises through innovative IT and geospatial technology. We're hiring across engineering, GIS, and delivery."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Careers' }]}
         visual={
           <div className='relative w-full max-w-lg mx-auto lg:mx-0 lg:ml-auto'>

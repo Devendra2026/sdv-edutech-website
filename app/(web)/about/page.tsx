@@ -14,7 +14,7 @@ const team = [
   { name: 'Preeti Singh', title: 'Office Adminstrator', initials: 'PS' },
   { name: 'Sonam Dhall', title: 'Exective Assistant HR', initials: 'SD' },
   { name: 'Gaurav Yadav', title: 'Software Engineer', initials: 'GY' },
-  { name: 'Harsh Pauchauri', title: 'Frontend Developer', initials: 'HP' },
+  { name: 'Harsh Pachauri', title: 'Software Engineer', initials: 'HP' },
   { name: 'Divyanshi Arora', title: 'Data Analyst', initials: 'DA' },
 ]
 
