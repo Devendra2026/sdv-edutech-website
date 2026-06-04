@@ -1,0 +1,452 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* SDV EDUTECH Brand Colors - Modern */
+  --primary-blue: #1d4ed8;
+  --primary-red: #E30613;
+  --dark-navy: #0B1220;
+  --light-gray: #F4F7FC;
+  --border-light: #E6ECF5;
+  --success: #10B981;
+  --warning: #F59E0B;
+
+  /* Glow / accent used by the background theme */
+  --accent-glow: #3b82f6;
+  --accent-glow-2: #6366f1;
+
+  /* Design Tokens */
+  --background: #F6F8FD;
+  --foreground: #0E1729;
+  --card: #FFFFFF;
+  --card-foreground: #0E1729;
+  --popover: #FFFFFF;
+  --popover-foreground: #0E1729;
+  --primary: #1d4ed8;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E30613;
+  --secondary-foreground: #FFFFFF;
+  --muted: #EEF2FA;
+  --muted-foreground: #5B6678;
+  --accent: #E30613;
+  --accent-foreground: #FFFFFF;
+  --destructive: #E30613;
+  --destructive-foreground: #FFFFFF;
+  --border: #E6ECF5;
+  --input: #FFFFFF;
+  --ring: #1d4ed8;
+  --chart-1: #1d4ed8;
+  --chart-2: #E30613;
+  --chart-3: #6366f1;
+  --chart-4: #5B6678;
+  --chart-5: #10B981;
+  --radius: 0.85rem;
+  --sidebar: #0B1220;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #E30613;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1d4ed8;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #1E293B;
+  --sidebar-ring: #1d4ed8;
+
+  /* Background theme tints (light) */
+  --mesh-1: rgba(29, 78, 216, 0.18);
+  --mesh-2: rgba(99, 102, 241, 0.16);
+  --mesh-3: rgba(227, 6, 19, 0.10);
+  --grid-line: rgba(15, 23, 42, 0.045);
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --glass-shadow: rgba(13, 30, 65, 0.10);
+}
+
+.dark {
+  --background: #070B14;
+  --foreground: #F1F5FB;
+  --card: #0F1729;
+  --card-foreground: #F1F5FB;
+  --popover: #0F1729;
+  --popover-foreground: #F1F5FB;
+  --primary: #3b82f6;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FF2D3B;
+  --secondary-foreground: #FFFFFF;
+  --muted: #131C30;
+  --muted-foreground: #97A4BC;
+  --accent: #FF2D3B;
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF2D3B;
+  --destructive-foreground: #FFFFFF;
+  --border: #1E2A41;
+  --input: #131C30;
+  --ring: #3b82f6;
+  --chart-1: #3b82f6;
+  --chart-2: #FF2D3B;
+  --chart-3: #818cf8;
+  --chart-4: #97A4BC;
+  --chart-5: #10B981;
+  --sidebar: #070B14;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #FF2D3B;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #3b82f6;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #1E2A41;
+  --sidebar-ring: #3b82f6;
+
+  --light-gray: #0B1220;
+  --accent-glow: #3b82f6;
+  --accent-glow-2: #818cf8;
+
+  /* Background theme tints (dark) */
+  --mesh-1: rgba(59, 130, 246, 0.22);
+  --mesh-2: rgba(129, 140, 248, 0.18);
+  --mesh-3: rgba(255, 45, 59, 0.12);
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --glass-bg: rgba(15, 23, 41, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.45);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  /* Newly registered brand helpers so existing utilities actually render */
+  --color-light-gray: var(--light-gray);
+  --color-dark-navy: var(--dark-navy);
+  --color-accent-glow: var(--accent-glow);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply text-foreground;
+    background-color: var(--background);
+  }
+}
+
+/* ============================================================
+   SITE BACKGROUND THEME
+   A fixed, multi-layer atmosphere that lives behind all content:
+   - drifting aurora / gradient mesh
+   - fine grid overlay
+   - soft grain texture
+   ============================================================ */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: var(--background);
+}
+
+/* Aurora mesh: large blurred radial blobs that slowly drift */
+.site-bg::before {
+  content: '';
+  position: absolute;
+  inset: -25%;
+  background:
+    radial-gradient(38% 42% at 18% 22%, var(--mesh-1) 0%, transparent 60%),
+    radial-gradient(34% 40% at 82% 18%, var(--mesh-3) 0%, transparent 60%),
+    radial-gradient(45% 48% at 75% 80%, var(--mesh-2) 0%, transparent 62%),
+    radial-gradient(30% 35% at 30% 85%, var(--mesh-1) 0%, transparent 60%);
+  filter: blur(20px);
+  animation: aurora-drift 26s ease-in-out infinite alternate;
+}
+
+/* Grid lines + grain in one overlay layer */
+.site-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 78%);
+  mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 78%);
+}
+
+.site-grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+@keyframes aurora-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(2.5%, -2%, 0) scale(1.08);
+  }
+
+  100% {
+    transform: translate3d(-2%, 2.5%, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-bg::before {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   GLASS + DECOR UTILITIES
+   ============================================================ */
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 30px -12px var(--glass-shadow);
+}
+
+.glass-header {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
+.card-hover {
+  transition: transform .35s cubic-bezier(.2, .7, .2, 1), box-shadow .35s ease, border-color .35s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -22px var(--glass-shadow);
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, var(--primary) 0%, var(--accent-glow-2, var(--primary)) 45%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glow-ring {
+  box-shadow: 0 0 0 1px var(--glass-border), 0 18px 60px -24px var(--accent-glow);
+}
+
+@keyframes float-slow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: .5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: .9;
+    transform: scale(1.06);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4.5s ease-in-out infinite;
+}
+
+.eyebrow {
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-size: .72rem;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SHARED PAGE UTILITIES (used across all navigation pages)
+   ============================================================ */
+
+/* Subtle blueprint grid used behind page heroes / GIS visuals */
+.blueprint-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Hero section: stronger grid visible behind content, fades at edges */
+.hero-grid-bg {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 45%, #000 25%, transparent 72%);
+  mask-image: radial-gradient(ellipse 90% 85% at 50% 45%, #000 25%, transparent 72%);
+}
+
+/* Section eyebrow chip (pill variant of .eyebrow) */
+.eyebrow-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .35rem .85rem;
+  border-radius: 9999px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-size: .68rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Gradient icon tile, matches the homepage service cards */
+.icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.9rem;
+  background: linear-gradient(135deg, var(--primary), var(--accent-glow));
+  color: #fff;
+  box-shadow: 0 12px 28px -12px var(--accent-glow);
+}
+
+/* Animated dashed stroke for GIS routes / map paths */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+
+.animate-dash {
+  stroke-dasharray: 6 8;
+  animation: dash-flow 1.4s linear infinite;
+}
+
+/* Slow ping for map markers / radar */
+@keyframes ring-ping {
+  0% {
+    transform: scale(.6);
+    opacity: .7;
+  }
+
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.animate-ring-ping {
+  animation: ring-ping 2.6s cubic-bezier(0, 0, .2, 1) infinite;
+}
+
+/* Marquee for client logo strip */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-x 34s linear infinite;
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* Shimmer sweep used on hover for feature media */
+@keyframes shimmer-sweep {
+  100% {
+    transform: translateX(140%);
+  }
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-140%);
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .25) 50%, transparent 70%);
+}
+
+.shimmer:hover::after {
+  animation: shimmer-sweep 1.1s ease;
+}
+
+/* Section divider tint band (replaces flat from-light-gray heroes) */
+.section-tint {
+  background: color-mix(in srgb, var(--muted) 55%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-dash,
+  .animate-ring-ping,
+  .animate-marquee {
+    animation: none;
+  }
+}

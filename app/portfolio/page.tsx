@@ -1,0 +1,113 @@
+'use client';
+
+import Header from '@/components/layout/header';
+import Footer from '@/components/layout/footer';
+import PageHero from '@/components/shared/page-hero';
+import ProjectThumb from '@/components/visuals/project-thumb';
+import NetworkVisual from '@/components/visuals/network-grid';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+
+type Theme = 'gis' | 'software' | 'survey' | 'network' | 'training' | 'consulting';
+
+const projects: { title: string; category: string; theme: Theme; description: string; metric: string }[] = [
+  { title: 'Survey Platform for Public Works', category: 'Survey', theme: 'survey', description: 'Real-time field data capture and validation across 200+ sites.', metric: '40% faster reporting' },
+  { title: 'Statewide GIS Mapping System', category: 'GIS', theme: 'gis', description: 'Spatial asset management with multi-layer terrain analysis.', metric: '1.2M parcels mapped' },
+  { title: 'Enterprise CRM Platform', category: 'Software', theme: 'software', description: 'Custom CRM unifying sales, support, and analytics.', metric: '3x pipeline visibility' },
+  { title: 'Cloud Migration & DevOps', category: 'Transformation', theme: 'network', description: 'Zero-downtime migration to a resilient multi-region cloud.', metric: '99.98% uptime' },
+  { title: 'Workforce Training LMS', category: 'Training', theme: 'training', description: 'Scalable learning platform with progress tracking.', metric: '8,000+ learners' },
+  { title: 'Data Strategy Engagement', category: 'Consulting', theme: 'consulting', description: 'Governance and architecture roadmap for analytics.', metric: '6-month roadmap' },
+];
+
+const categories = ['All', 'Survey', 'GIS', 'Software', 'Transformation', 'Training', 'Consulting'];
+
+export default function PortfolioPage() {
+  const [activeFilter, setActiveFilter] = useState('All');
+  const filtered = activeFilter === 'All' ? projects : projects.filter((p) => p.category === activeFilter);
+
+  return (
+    <main className="min-h-screen">
+      <Header />
+
+      <PageHero
+        eyebrow="Our work"
+        title="Projects that Deliver Results"
+        highlight="Results"
+        description="A showcase of IT and geospatial engagements — from large-scale GIS systems to enterprise platforms and digital transformation programs."
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'Portfolio' }]}
+        visual={<NetworkVisual />}
+      />
+
+      <section className="relative py-12 md:py-20">
+        <div className="absolute inset-0 -z-10 section-tint" aria-hidden />
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          {/* Filter pills */}
+          <div className="flex flex-wrap gap-2 mb-12 justify-center">
+            {categories.map((category) => {
+              const active = activeFilter === category;
+              return (
+                <motion.button
+                  key={category}
+                  onClick={() => setActiveFilter(category)}
+                  className={`relative px-5 py-2 rounded-full font-medium text-sm transition-colors ${
+                    active ? 'text-primary-foreground' : 'glass text-foreground hover:text-primary'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {active && (
+                    <motion.span
+                      layoutId="filter-active"
+                      className="absolute inset-0 rounded-full bg-primary shadow-lg shadow-primary/25"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative z-10">{category}</span>
+                </motion.button>
+              );
+            })}
+          </div>
+
+          {/* Projects grid */}
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" layout>
+            <AnimatePresence mode="popLayout">
+              {filtered.map((project) => (
+                <motion.div
+                  key={project.title}
+                  layout
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.92 }}
+                  transition={{ duration: 0.35 }}
+                  className="group rounded-2xl glass card-hover overflow-hidden cursor-pointer"
+                >
+                  <div className="p-3.5 pb-0">
+                    <ProjectThumb theme={project.theme} />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="inline-block px-3 py-1 rounded-full bg-primary/8 border border-primary/15 text-primary text-xs font-medium">
+                        {project.category}
+                      </span>
+                      <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    </div>
+                    <h3 className="font-display text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">{project.description}</p>
+                    <div className="pt-3 border-t border-border/70">
+                      <span className="text-sm font-semibold text-gradient">{project.metric}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
