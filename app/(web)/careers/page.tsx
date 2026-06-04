@@ -8,14 +8,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const jobs = [
-  { title: 'Senior Software Engineer', location: 'New Delhi', salary: '₹15–25 LPA', dept: 'Engineering' },
+  { title:  'Senior Software Engineer', location: 'New Delhi', salary: '₹15–25 LPA', dept: 'Engineering' },
   
 ]
 
 const benefits = [
   {
     icon: <TrendingUp className='w-6 h-6' />,
-    title: 'Growth Opportunities',
+    title: 'Growth Opportunities' ,
     description: 'Clear career paths, mentorship, and continuous skill development.',
   },
   {
