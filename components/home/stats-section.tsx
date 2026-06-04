@@ -17,8 +17,8 @@ export default function StatsSection() {
 
   const stats: StatItem[] = [
     { value: 100, label: 'Enterprise Clients', suffix: '+', icon: <Building2 className="w-6 h-6" /> },
-    { value: 50, label: 'Successful Projects', suffix: '+', icon: <Rocket className="w-6 h-6" /> },
-    { value: 15, label: 'Years of Experience', suffix: '+', icon: <CalendarClock className="w-6 h-6" /> },
+    { value: 100, label: 'Successful Projects', suffix: '+', icon: <Rocket className="w-6 h-6" /> },
+    { value: 4, label: 'Years of Excellence', suffix: '+', icon: <CalendarClock className="w-6 h-6" /> },
     { value: 98, label: 'Client Satisfaction', suffix: '%', icon: <Smile className="w-6 h-6" /> },
   ];
 

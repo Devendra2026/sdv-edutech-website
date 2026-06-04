@@ -12,7 +12,7 @@ const trustPoints = [
 const stats = [
   { value: '100+', label: 'Enterprise clients' },
   { value: '100+', label: 'Projects delivered' },
-  { value: '5+', label: 'Years experience' },
+  { value: '4+', label: 'Years of Excellence' },
 ];
 
 export default function HeroSection() {

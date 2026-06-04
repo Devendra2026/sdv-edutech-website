@@ -1,22 +1,23 @@
-'use client';
+'use client'
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const navLinks = [
     { label: 'Home', href: '/' },
@@ -26,10 +27,9 @@ export default function Header() {
     { label: 'Clients', href: '/clients' },
     { label: 'Careers', href: '/careers' },
     { label: 'Contact', href: '/contact' },
-  ];
+  ]
 
-  const isActive = (href: string) =>
-    href === '/' ? pathname === '/' : pathname.startsWith(href);
+  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href))
 
   return (
     <header
@@ -37,20 +37,23 @@ export default function Header() {
         scrolled ? 'glass-header border-b border-border/60 shadow-sm' : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-3.5 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <div className="w-10 h-10 bg-linear-to-br from-primary to-accent-glow rounded-xl flex items-center justify-center shadow-lg shadow-primary/25">
-            <span className="text-white font-display font-bold text-base">SDV</span>
-          </div>
-          <div className="hidden sm:block">
-            <h1 className="font-display font-bold text-lg text-foreground leading-tight">SDV EDUTECH</h1>
-            <p className="text-xs text-muted-foreground">Enterprise Solutions</p>
+      <nav className='max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-3.5 flex items-center justify-between'>
+        <Link href='/' className='flex items-center gap-2.5 shrink-0'>
+          <div className='bg-linear-to-br from-primary to-accent-glow rounded-xl flex items-center justify-center shadow-lg shadow-primary/25'>
+            <Image
+              src='/logo.jpeg'
+              alt='SDV EDUTECH'
+              width={1280}
+              height={622}
+              className='h-12 w-auto rounded-md'
+              priority
+            />
           </div>
         </Link>
 
-        <div className="hidden md:flex items-center gap-0.5">
-          {navLinks.map((link) => {
-            const active = isActive(link.href);
+        <div className='hidden md:flex items-center gap-0.5'>
+          {navLinks.map(link => {
+            const active = isActive(link.href)
             return (
               <Link
                 key={link.href}
@@ -62,22 +65,22 @@ export default function Header() {
                 {link.label}
                 {active && (
                   <motion.span
-                    layoutId="nav-active"
-                    className="absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-linear-to-r from-primary to-secondary"
+                    layoutId='nav-active'
+                    className='absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-linear-to-r from-primary to-secondary'
                     transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                   />
                 )}
               </Link>
-            );
+            )
           })}
         </div>
 
-        <div className="hidden md:flex items-center gap-4">
-          <Link href="/contact">
+        <div className='hidden md:flex items-center gap-4'>
+          <Link href='/contact'>
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              className="px-6 py-2.5 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
+              className='px-6 py-2.5 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25'
             >
               Get Started
             </motion.button>
@@ -86,10 +89,10 @@ export default function Header() {
 
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 hover:bg-muted rounded-lg transition-colors"
-          aria-label="Toggle menu"
+          className='md:hidden p-2 hover:bg-muted rounded-lg transition-colors'
+          aria-label='Toggle menu'
         >
-          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMenuOpen ? <X className='w-6 h-6' /> : <Menu className='w-6 h-6' />}
         </button>
       </nav>
 
@@ -99,11 +102,11 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-header border-b border-border/60 overflow-hidden"
+            className='md:hidden glass-header border-b border-border/60 overflow-hidden'
           >
-            <div className="px-4 py-4 space-y-1">
-              {navLinks.map((link) => {
-                const active = isActive(link.href);
+            <div className='px-4 py-4 space-y-1'>
+              {navLinks.map(link => {
+                const active = isActive(link.href)
                 return (
                   <Link
                     key={link.href}
@@ -117,10 +120,10 @@ export default function Header() {
                   >
                     {link.label}
                   </Link>
-                );
+                )
               })}
-              <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
-                <button className="w-full mt-3 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-colors">
+              <Link href='/contact' onClick={() => setIsMenuOpen(false)}>
+                <button className='w-full mt-3 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-colors'>
                   Get Started
                 </button>
               </Link>
@@ -129,5 +132,5 @@ export default function Header() {
         )}
       </AnimatePresence>
     </header>
-  );
+  )
 }

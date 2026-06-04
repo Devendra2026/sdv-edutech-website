@@ -17,7 +17,6 @@ const sora = Sora({
 export const metadata: Metadata = {
   title: 'SDV EDUTECH - Enterprise Technology Solutions',
   description: 'Enterprise technology, survey management, GIS solutions, software development, and digital transformation services.',
-  generator: 'v0.app',
   icons: {
     icon: [
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
