@@ -6,17 +6,17 @@ import { motion } from 'framer-motion'
 import { Award, HeartHandshake, Lightbulb, ShieldCheck } from 'lucide-react'
 import Image from 'next/image'
 
-const team = [
-  { name: 'Devendra Singh', title: 'Founder & CEO', initials: 'DS' },
-  { name: 'Tarun Sikarwar', title: 'Chief Technology Officer', initials: 'TS' },
-  { name: 'Dr. Pradeep Dwivedi', title: 'Head of Operations', initials: 'PD' },
-  { name: 'Aditya Singh', title: 'Field Operation Manager', initials: 'AP' },
-  { name: 'Preeti Singh', title: 'Office Adminstrator', initials: 'PS' },
-  { name: 'Sonam Dhall', title: 'Exective Assistant HR', initials: 'SD' },
-  { name: 'Gaurav Yadav', title: 'Software Engineer', initials: 'GY' },
-  { name: 'Harsh Pachauri', title: 'Software Engineer', initials: 'HP' },
-  { name: 'Divyanshi Arora', title: 'Data Analyst', initials: 'DA' },
-]
+// const team = [
+//   { name: 'Devendra Singh', title: 'Founder & CEO', initials: 'DS' },
+//   { name: 'Tarun Sikarwar', title: 'Chief Technology Officer', initials: 'TS' },
+//   { name: 'Dr. Pradeep Dwivedi', title: 'Head of Operations', initials: 'PD' },
+//   { name: 'Aditya Singh', title: 'Field Operation Manager', initials: 'AP' },
+//   { name: 'Preeti Singh', title: 'Office Adminstrator', initials: 'PS' },
+//   { name: 'Sonam Dhall', title: 'Exective Assistant HR', initials: 'SD' },
+//   { name: 'Gaurav Yadav', title: 'Software Engineer', initials: 'GY' },
+//   { name: 'Harsh Pachauri', title: 'Software Engineer', initials: 'HP' },
+//   { name: 'Divyanshi Arora', title: 'Data Analyst', initials: 'DA' },
+// ]
 
 const values = [
   {
@@ -149,7 +149,7 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section className='py-16 md:py-24'>
+      {/* <section className='py-16 md:py-24'>
         <div className='max-w-7xl mx-auto px-4 md:px-6 lg:px-8'>
           <SectionHeading
             eyebrow='Leadership'
@@ -177,7 +177,7 @@ export default function About() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </main>
   )
 }
