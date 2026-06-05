@@ -8,7 +8,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const jobs = [
-  { title:  'Senior Software Engineer', location: 'New Delhi', salary: '₹15–25 LPA', dept: 'Engineering' },
+  { title: 'Senior Software Engineer', location: 'Agra',  dept: 'Engineering' },
+  { title: 'GIS Specialist', location: 'Agra',  dept: 'GIS' },
+  { title: 'Field Surveyor', location: 'Agra',  dept: 'Land Record' },
+  { title: 'HR Manager', location: 'Agra', dept: 'Business Administration' },
+  { title: 'Office Assistant', location: 'Agra',  dept: 'Office Administration' },
+  { title: 'Data Entry Operator', location: 'Agra',  dept: 'Data Management' },
+  { title:  'Field Supervisor', location: 'Agra', dept: 'Field Operations' },
   
 ]
 
@@ -123,10 +129,7 @@ export default function CareersPage() {
                       <MapPin className='w-4 h-4 text-primary' />
                       {job.location}
                     </div>
-                    <div className='flex items-center gap-2'>
-                      <Banknote className='w-4 h-4 text-primary' />
-                      {job.salary}
-                    </div>
+                    
                   </div>
                 </div>
                 <Link

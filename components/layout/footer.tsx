@@ -39,15 +39,7 @@ export default function Footer() {
           <div className='md:col-span-2'>
             <h4 className='font-semibold text-foreground text-sm mb-6'>Services</h4>
             <ul className='space-y-3'>
-              <li>
-                <Link
-                  href='/services'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  Survey Management
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
+              
               <li>
                 <Link
                   href='/services'
@@ -81,6 +73,33 @@ export default function Footer() {
                   className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
                 >
                   SBM - SWM Services
+                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='/services'
+                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
+                >
+                  Out Sourcing/Main Power Services
+                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='/services'
+                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
+                >
+                  Payroll Management
+                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='/services'
+                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
+                >
+                  Consulting Services
                   <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
                 </Link>
               </li>
@@ -124,6 +143,15 @@ export default function Footer() {
                   className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
                 >
                   Contact
+                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
+                </Link>
+              </li>
+               <li>
+                <Link
+                  href='/gallery'
+                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
+                >
+                  Gallery
                   <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
                 </Link>
               </li>

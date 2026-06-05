@@ -50,10 +50,7 @@ export default function HeroSection() {
                 <span className="text-primary">IT Solutions</span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl text-justify">
-                Sdv Edutech Private Limited delivers next-generation digital solutions spanning enterprise software,
-                cloud integration, IT consultancy, survey management, and skill development programs.
-                We help government and corporate clients strengthen decision-making and build resilient
-                digital ecosystems for long-term growth.
+                At Sdv Edutech Private Limited, we specialize in delivering next-generation digital solutions spanning AI-powered software systems, GIS & drone-based survey services, automated data digitization, enterprise system integration, DPR & PMC consultancy, and skill development programs. Driven by innovation and precision, we enable government and corporate clients to enhance efficiency, strengthen decision-making, and build resilient digital ecosystems for long-term growth
               </p>
             </div>
 

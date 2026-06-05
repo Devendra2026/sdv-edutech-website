@@ -26,6 +26,7 @@ export default function Header() {
     { label: 'Portfolio', href: '/portfolio' },
     { label: 'Clients', href: '/clients' },
     { label: 'Careers', href: '/careers' },
+    { label: 'Gallery', href: '/gallery' },
     { label: 'Contact', href: '/contact' },
   ]
 
@@ -45,7 +46,7 @@ export default function Header() {
               alt='SDV EDUTECH'
               width={1280}
               height={622}
-              className='h-12 w-auto rounded-md'
+              className='h-17 w-auto rounded-md'
               priority
             />
           </div>
