@@ -2,7 +2,6 @@ import AboutSection from '@/components/home/about-section'
 import HeroSection from '@/components/home/hero-section'
 import RecognitionSection from '@/components/home/recognition-section'
 import ServicesSection from '@/components/home/services-section'
-import TestimonialsSection from '@/components/home/testimonials-section'
 import TransformSection from '@/components/home/transform-section'
 import { Metadata } from 'next/types'
 
@@ -22,7 +21,6 @@ export default function HomePage() {
       <AboutSection />
       <ServicesSection />
       <TransformSection />
-      <TestimonialsSection />
       <RecognitionSection />
     </main>
   )

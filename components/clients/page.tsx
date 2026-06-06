@@ -30,17 +30,17 @@ const testimonials = [
   {
     quote:
       'Their GIS platform transformed how we manage public infrastructure across the state.',
-    author: 'Nagar Panchayat Fatehabad',
+    author: '',
   },
   {
     quote:
       'A true engineering partner — the survey system paid for itself within months.',
-    author: 'Nagar Panchayat Govardhan',
+    author: '',
   },
   {
     quote:
       'From strategy to delivery, SDV made our cloud migration genuinely seamless.',
-    author: 'Nagar Panchayat Chhata',
+    author: '',
   },
 ]
 

@@ -81,7 +81,7 @@ export default function Footer() {
                   href='/services'
                   className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
                 >
-                  Out Sourcing/Main Power Services
+                  OutSourcing / ManPower Services
                   <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
                 </Link>
               </li>

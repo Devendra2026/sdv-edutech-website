@@ -245,7 +245,7 @@ const services = [
     description:
       'Advanced survey solutions for comprehensive data collection, real-time validation, and actionable analytics.',
     tags: ['Data Capture', 'Dashboards'],
-    imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+    imageSrc: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80',
     popupDetails: {
       overview: 'Our survey architecture is engineered to bypass manual capture errors completely. We build secure pipelines parsing thousands of distributed telemetry points synchronously.',
       deliverables: ['Real-time Validation Engine', 'Custom Analytical Dashboards', 'Offline-first Client Apps'],
