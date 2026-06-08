@@ -424,7 +424,7 @@ export default function Services() {
               >
                 <div className='relative flex flex-col h-full rounded-2xl border border-border/60 glass overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20'>
                   {/* Top Image Box with Hover Zoom */}
-                  <div className='relative w-full aspect-[16/10] overflow-hidden bg-muted'>
+                  <div className='relative w-full aspect-video overflow-hidden bg-muted'>
                     <Image
                       src={service.imageSrc}
                       alt={service.title}
@@ -432,7 +432,7 @@ export default function Services() {
                       className='object-cover transition-transform duration-500 ease-out group-hover:scale-105'
                       sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                     />
-                    <div className='absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent' />
+                    <div className='absolute inset-0 bg-linear-to-t from-background/90 via-background/20 to-transparent' />
 
                     {/* Tags Layered on Bottom-Left of Image */}
                     <div className='absolute bottom-4 left-4 flex flex-wrap gap-1.5'>
@@ -447,17 +447,17 @@ export default function Services() {
                     </div>
 
                     {/* Quick Access Floating Icon */}
-                    <div className='absolute top-4 right-4 p-2 rounded-xl bg-background/80 backdrop-blur-xs text-primary border border-border/40 opacity-0 transform translate-y-[-4px] group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300'>
+                    <div className='absolute top-4 right-4 p-2 rounded-xl bg-background/80 backdrop-blur-xs text-primary border border-border/40 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300'>
                       {service.icon}
                     </div>
                   </div>
 
                   {/* Bottom Text Content */}
-                  <div className='flex flex-col flex-grow p-6 md:p-7'>
+                  <div className='flex flex-col grow p-6 md:p-7'>
                     <h3 className='font-display text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-200'>
                       {service.title}
                     </h3>
-                    <p className='text-muted-foreground text-sm leading-relaxed flex-grow mb-6'>
+                    <p className='text-muted-foreground text-sm leading-relaxed grow mb-6'>
                       {service.description}
                     </p>
                     <div className='inline-flex items-center gap-1.5 text-primary font-semibold text-sm mt-auto'>
@@ -505,9 +505,9 @@ export default function Services() {
 
               <div className='grid grid-cols-1 md:grid-cols-12 gap-0'>
                 {/* Visual Cover Half */}
-                <div className='relative md:col-span-5 h-48 md:h-auto min-h-[220px] bg-muted'>
+                <div className='relative md:col-span-5 h-75 md:h-auto min-h-75 bg-muted'>
                   <Image src={activeCard.imageSrc} alt={activeCard.title} fill className='object-cover' />
-                  <div className='absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-background via-transparent to-transparent' />
+                  <div className='absolute inset-0 bg-linear-to-t md:bg-linear-to-r from-background via-transparent to-transparent' />
                   <div className='absolute bottom-6 left-6 hidden md:block'>
                     <div className='p-3 bg-background/90 text-primary rounded-xl border border-border w-fit shadow-md'>
                       {activeCard.icon}
@@ -596,7 +596,7 @@ export default function Services() {
                 className='group relative flex flex-col h-full rounded-2xl border border-border/60 glass overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20'
               >
                 {/* Process Step Image Container */}
-                <div className='relative w-full aspect-[16/10] overflow-hidden bg-muted'>
+                <div className='relative w-full aspect-video overflow-hidden bg-muted'>
                   <Image
                     src={p.imageSrc}
                     alt={p.title}
@@ -604,7 +604,7 @@ export default function Services() {
                     className='object-cover transition-transform duration-500 ease-out group-hover:scale-105'
                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw'
                   />
-                  <div className='absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent' />
+                  <div className='absolute inset-0 bg-linear-to-t from-background via-background/40 to-transparent' />
 
                   {/* Step Number Overlay */}
                   <span className='font-display text-4xl font-extrabold text-foreground/15 absolute top-3 right-4 select-none group-hover:text-primary/20 transition-colors duration-300'>
@@ -618,7 +618,7 @@ export default function Services() {
                 </div>
 
                 {/* Process Step Text Description */}
-                <div className='flex flex-col flex-grow p-6'>
+                <div className='flex flex-col grow p-6'>
                   <h3 className='font-display text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-200'>
                     {p.title}
                   </h3>

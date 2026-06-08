@@ -106,7 +106,7 @@ export default function AdminDashboard() {
               <div className='space-y-4'>
                 {recentActivities.map(activity => (
                   <div key={`${activity.action}-${activity.time}`} className='flex items-start gap-4'>
-                    <div className='w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0'></div>
+                    <div className='w-2 h-2 rounded-full bg-primary mt-2 shrink-0'></div>
                     <div className='flex-1'>
                       <p className='text-sm text-foreground font-medium'>{activity.action}</p>
                       <p className='text-xs text-muted-foreground'>{activity.time}</p>

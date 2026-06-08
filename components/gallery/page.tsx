@@ -87,7 +87,7 @@ export default function PhotoGallery() {
 
   return (
     <>
-      <section className='relative overflow-hidden py-20 bg-gradient-to-b from-sky-50 via-white to-blue-50'>
+      <section className='relative overflow-hidden py-20 bg-linear-to-b from-sky-50 via-white to-blue-50'>
         {/* Premium Grid Background */}
         <div
           className='absolute inset-0 opacity-50'
@@ -103,7 +103,7 @@ export default function PhotoGallery() {
         {/* Glow Effects */}
         <div className='absolute top-0 left-0 w-96 h-96 bg-blue-200/40 rounded-full blur-3xl' />
         <div className='absolute top-40 right-0 w-96 h-96 bg-cyan-200/40 rounded-full blur-3xl' />
-        <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-sky-100/40 rounded-full blur-3xl' />
+        <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-125 h-125 bg-sky-100/40 rounded-full blur-3xl' />
 
         <div className='relative z-10 max-w-7xl mx-auto px-4'>
           {/* Section Header */}
@@ -118,7 +118,7 @@ export default function PhotoGallery() {
               Explore memorable moments, events, workshops, awareness programs, and achievements through our gallery.
             </p>
 
-            <div className='w-28 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mx-auto mt-6' />
+            <div className='w-28 h-1 bg-linear-to-r from-blue-500 to-cyan-500 rounded-full mx-auto mt-6' />
           </div>
 
           {/* Gallery Grid */}
@@ -156,7 +156,7 @@ export default function PhotoGallery() {
                     '
                   />
 
-                  <div className='absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent' />
+                  <div className='absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent' />
                 </div>
 
                 {/* Content */}
@@ -172,7 +172,7 @@ export default function PhotoGallery() {
       {/* Fullscreen Popup */}
       {selectedImage && (
         <div
-          className='fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4'
+          className='fixed inset-0 z-9999 bg-black/90 flex items-center justify-center p-4'
           onClick={() => setSelectedImage(null)}
         >
           {/* Close Button */}

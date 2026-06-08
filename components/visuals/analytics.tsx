@@ -24,7 +24,7 @@ export default function AnalyticsVisual({ className = '' }: { className?: string
 
   return (
     <div className={`relative ${className}`}>
-      <div className='absolute inset-4 rounded-[2rem] bg-secondary/20 blur-3xl animate-pulse-glow' aria-hidden />
+      <div className='absolute inset-4 rounded-4xl bg-secondary/20 blur-3xl animate-pulse-glow' aria-hidden />
       <motion.div
         className='relative glass glow-ring rounded-[1.6rem] p-5 overflow-hidden'
         animate={{ y: [0, -12, 0] }}
@@ -77,7 +77,7 @@ export default function AnalyticsVisual({ className = '' }: { className?: string
               {bars.map((bar, i) => (
                 <motion.div
                   key={bar.day}
-                  className='flex-1 rounded-md bg-gradient-to-t from-primary to-accent-glow'
+                  className='flex-1 rounded-md bg-linear-to-t from-primary to-accent-glow'
                   initial={{ height: 0 }}
                   animate={{ height: `${bar.h}%` }}
                   transition={{ duration: 0.8, delay: 0.4 + i * 0.08, ease: 'easeOut' }}

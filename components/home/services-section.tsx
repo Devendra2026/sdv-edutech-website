@@ -98,7 +98,7 @@ export default function ServicesSection() {
 
       {/* Grid Mesh */}
       <div
-        className='absolute inset-0 opacity-[0.22] pointer-events-none bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:24px_24px]'
+        className='absolute inset-0 opacity-[0.22] pointer-events-none bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] bg-size-[24px_24px]'
         aria-hidden
       />
 
@@ -135,7 +135,7 @@ export default function ServicesSection() {
                 className='relative h-full rounded-3xl border border-slate-200/70 bg-white/70 backdrop-blur-xl hover:bg-white/95 hover:border-slate-300 transition-all duration-500 overflow-hidden cursor-zoom-in flex flex-col shadow-md shadow-slate-200/20 hover:shadow-xl hover:shadow-slate-200/40'
               >
                 <div
-                  className={`absolute inset-0 bg-gradient-to-b ${service.gradient} opacity-100 pointer-events-none`}
+                  className={`absolute inset-0 bg-linear-to-b ${service.gradient} opacity-100 pointer-events-none`}
                 />
 
                 {/* Top Image Frame */}
@@ -148,12 +148,12 @@ export default function ServicesSection() {
                       sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                       className='object-cover transition-transform duration-700 ease-out group-hover/img:scale-105 contrast-[1.01]'
                     />
-                    <div className='absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none' />
+                    <div className='absolute inset-0 bg-linear-to-t from-black/10 via-transparent to-transparent pointer-events-none' />
                   </div>
                 </div>
 
                 {/* Card Info Body */}
-                <div className='p-6 flex flex-col flex-grow relative z-10'>
+                <div className='p-6 flex flex-col grow relative z-10'>
                   <div className='flex items-center justify-between mb-4'>
                     <div className={`p-2.5 rounded-xl border shadow-2xs ${service.accentColor}`}>{service.icon}</div>
 
@@ -167,7 +167,7 @@ export default function ServicesSection() {
                     {service.title}
                   </h3>
 
-                  <p className='text-slate-600 text-sm leading-relaxed mb-6 flex-grow'>{service.description}</p>
+                  <p className='text-slate-600 text-sm leading-relaxed mb-6 grow'>{service.description}</p>
 
                   {/* Clean Text Indicator — Clicking this now safely opens the image modal because it inherits from parent div */}
                   <div className='pt-4 border-t border-slate-100 mt-auto flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors duration-300'>
@@ -228,7 +228,7 @@ export default function ServicesSection() {
               exit={{ scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               onClick={e => e.stopPropagation()}
-              className='relative max-w-5xl w-full aspect-[4/3] md:aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-slate-900'
+              className='relative max-w-5xl w-full aspect-square md:aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-slate-900'
             >
               <Image
                 src={activeImage}

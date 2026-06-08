@@ -59,7 +59,7 @@ export default function CodeWindowVisual({ className = '' }: { className?: strin
 
   return (
     <div className={`relative ${className}`}>
-      <div className='absolute inset-4 rounded-[2rem] bg-accent-glow/25 blur-3xl animate-pulse-glow' aria-hidden />
+      <div className='absolute inset-4 rounded-4xl bg-accent-glow/25 blur-3xl animate-pulse-glow' aria-hidden />
       <motion.div
         className='relative glass glow-ring rounded-[1.6rem] p-5 overflow-hidden'
         animate={{ y: [0, -12, 0] }}
@@ -112,7 +112,7 @@ export default function CodeWindowVisual({ className = '' }: { className?: strin
         </div>
 
         {/* status bar */}
-        <div className='flex items-center justify-between mt-4 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 py-2.5 text-white'>
+        <div className='flex items-center justify-between mt-4 rounded-xl bg-linear-to-r from-primary to-secondary px-4 py-2.5 text-white'>
           <span className='text-xs font-medium flex items-center gap-1.5'>
             <GitBranch className='w-3.5 h-3.5' /> main
           </span>

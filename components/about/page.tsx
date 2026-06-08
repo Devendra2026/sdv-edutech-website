@@ -323,7 +323,7 @@ export default function About() {
                 className='group relative flex flex-col h-full rounded-2xl border border-border/60 glass overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20'
               >
                 {/* Value Card Image Container */}
-                <div className='relative w-full aspect-[16/11] overflow-hidden bg-muted'>
+                <div className='relative w-full aspect-16/11 overflow-hidden bg-muted'>
                   <Image
                     src={v.imageSrc}
                     alt={v.title}
@@ -332,7 +332,7 @@ export default function About() {
                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw'
                   />
                   {/* Smooth Gradient Overlay */}
-                  <div className='absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent' />
+                  <div className='absolute inset-0 bg-linear-to-t from-background via-background/40 to-transparent' />
 
                   {/* Floating Action Icon inside the box */}
                   <div className='absolute bottom-3 left-4 p-2.5 bg-background/90 text-primary rounded-xl border border-border/40 shadow-sm transition-transform duration-300 group-hover:scale-110'>
@@ -341,7 +341,7 @@ export default function About() {
                 </div>
 
                 {/* Card Context Content */}
-                <div className='flex flex-col flex-grow p-6'>
+                <div className='flex flex-col grow p-6'>
                   <h3 className='font-display text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-200'>
                     {v.title}
                   </h3>

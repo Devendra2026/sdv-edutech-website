@@ -22,7 +22,7 @@ export default function NetworkVisual({ className = '' }: { className?: string }
 
   return (
     <div className={`relative ${className}`}>
-      <div className='absolute inset-4 rounded-[2rem] bg-primary/25 blur-3xl animate-pulse-glow' aria-hidden />
+      <div className='absolute inset-4 rounded-4xl bg-primary/25 blur-3xl animate-pulse-glow' aria-hidden />
       <motion.div
         className='relative glass glow-ring rounded-[1.6rem] p-5 overflow-hidden'
         animate={{ y: [0, -12, 0] }}
@@ -77,7 +77,7 @@ export default function NetworkVisual({ className = '' }: { className?: string }
                   stroke='currentColor'
                   strokeWidth='2'
                   className='animate-ring-ping'
-                  style={{ transformOrigin: `${n.x}px ${n.y}px`, animationDelay: `${i * 0.4}s` }}
+                  style={{ transformOrigin: `${n.x}px ${n.y}px`, animationDelay: `${Number(n) * 0.4}s` }}
                 />
                 <circle
                   cx={n.x}
@@ -88,7 +88,7 @@ export default function NetworkVisual({ className = '' }: { className?: string }
                   strokeOpacity='0.5'
                   strokeWidth='1.5'
                 />
-                <circle cx={n.x} cy={n.y} r='3' fill={i % 2 ? 'var(--secondary)' : 'currentColor'} />
+                <circle cx={n.x} cy={n.y} r='3' fill={Number(n) % 2 ? 'var(--secondary)' : 'currentColor'} />
               </g>
             ))}
 

@@ -13,7 +13,7 @@ export default function AboutSection() {
   return (
     <section className='relative overflow-hidden py-24'>
       {/* Background */}
-      <div className='absolute inset-0 bg-gradient-to-b from-white via-sky-50 to-white' />
+      <div className='absolute inset-0 bg-linear-to-b from-white via-sky-50 to-white' />
 
       {/* Premium Grid */}
       <div
@@ -43,7 +43,7 @@ export default function AboutSection() {
 
             <h2 className='mt-6 text-4xl md:text-5xl font-bold text-gray-900 leading-tight'>About Sdv Edutech</h2>
 
-            <h3 className='mt-4 text-2xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent'>
+            <h3 className='mt-4 text-2xl font-semibold bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent'>
               Your Ideal Partner for Technology Solutions
             </h3>
 

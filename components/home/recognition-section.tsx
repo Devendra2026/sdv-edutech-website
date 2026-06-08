@@ -48,7 +48,7 @@ export default function RecognitionSlider() {
   return (
     <section className='relative overflow-hidden py-24'>
       {/* Background */}
-      <div className='absolute inset-0 bg-gradient-to-b from-white via-sky-50 to-white' />
+      <div className='absolute inset-0 bg-linear-to-b from-white via-sky-50 to-white' />
 
       {/* Grid */}
       <div
@@ -80,7 +80,7 @@ export default function RecognitionSlider() {
             delivery.
           </p>
 
-          <div className='w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mx-auto mt-6' />
+          <div className='w-24 h-1 bg-linear-to-r from-blue-500 to-cyan-500 rounded-full mx-auto mt-6' />
         </div>
 
         {/* Slider */}
@@ -128,7 +128,7 @@ export default function RecognitionSlider() {
                     src={item.image}
                     alt={item.title}
                     className='
-                      h-[300px]
+                      h-75
                       w-full
                       object-cover
                       group-hover:scale-105

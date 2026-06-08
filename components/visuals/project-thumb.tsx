@@ -10,7 +10,7 @@ type Theme = 'gis' | 'software' | 'survey' | 'network' | 'training' | 'consultin
  */
 export default function ProjectThumb({ theme }: { theme: Theme }) {
   return (
-    <div className='relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-border bg-gradient-to-br from-primary/12 via-card to-secondary/8'>
+    <div className='relative w-full aspect-16/10 rounded-xl overflow-hidden border border-border bg-linear-to-br from-primary/12 via-card to-secondary/8'>
       <div className='absolute inset-0 blueprint-grid opacity-70' aria-hidden />
       <svg viewBox='0 0 320 200' className='relative w-full h-full text-primary'>
         {theme === 'gis' && <Gis />}

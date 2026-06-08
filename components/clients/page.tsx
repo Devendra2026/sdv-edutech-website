@@ -93,7 +93,7 @@ export default function Clients() {
 
       {/* Clients Grid */}
       <section className='relative py-12 md:py-20'>
-        <div className='absolute inset-0 -z-10 bg-gradient-to-b from-slate-50 to-white' />
+        <div className='absolute inset-0 -z-10 bg-linear-to-b from-slate-50 to-white' />
 
         <div className='max-w-7xl mx-auto px-4 md:px-6 lg:px-8'>
           <SectionHeading
@@ -115,7 +115,7 @@ export default function Clients() {
                 variants={item}
                 className='bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500'
               >
-                <div className='h-[220px] bg-slate-50 flex items-center justify-center p-8'>
+                <div className='h-55 bg-slate-50 flex items-center justify-center p-8'>
                   <img src={client.logo} alt={client.name} className='max-h-28 object-contain' />
                 </div>
 

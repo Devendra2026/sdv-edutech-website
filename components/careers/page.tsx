@@ -233,7 +233,7 @@ export default function Careers() {
 
       {/* Structural Dot Matrix Grid Background */}
       <div
-        className='absolute inset-0 opacity-[0.25] pointer-events-none bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:24px_24px]'
+        className='absolute inset-0 opacity-[0.25] pointer-events-none bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] bg-size-[24px_24px]'
         aria-hidden
       />
 
@@ -245,7 +245,7 @@ export default function Careers() {
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Careers' }]}
         visual={
           <div className='relative w-full max-w-lg mx-auto lg:mx-0 lg:ml-auto'>
-            <div className='relative rounded-2xl overflow-hidden border border-slate-200/80 shadow-2xl shadow-blue-100/60 bg-white/70 backdrop-blur-xl ring-1 ring-black/[0.03]'>
+            <div className='relative rounded-2xl overflow-hidden border border-slate-200/80 shadow-2xl shadow-blue-100/60 bg-white/70 backdrop-blur-xl ring-1 ring-black/3'>
               <div className='relative w-full aspect-5/4'>
                 <Image
                   src='/images/careers-hero.png'
@@ -256,7 +256,7 @@ export default function Careers() {
                   sizes='(max-width: 1024px) 0px, 50vw'
                 />
                 <div
-                  className='absolute inset-0 bg-gradient-to-t from-[#f8fafc] via-transparent to-transparent pointer-events-none'
+                  className='absolute inset-0 bg-linear-to-t from-[#f8fafc] via-transparent to-transparent pointer-events-none'
                   aria-hidden
                 />
               </div>
@@ -284,7 +284,7 @@ export default function Careers() {
                 className='group relative rounded-3xl border border-slate-200/70 bg-white/70 backdrop-blur-xl hover:bg-white/95 hover:border-slate-300 transition-all duration-500 overflow-hidden flex flex-col h-full shadow-md shadow-slate-200/20 hover:shadow-xl hover:shadow-slate-200/40 cursor-default'
               >
                 {/* Dynamic Subtle Gradient overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-b ${b.gradient} pointer-events-none`} />
+                <div className={`absolute inset-0 bg-linear-to-b ${b.gradient} pointer-events-none`} />
 
                 {/* Card Picture Frame */}
                 <div className='p-4 pb-0 z-10'>
@@ -296,12 +296,12 @@ export default function Careers() {
                       sizes='(max-width: 768px) 100vw, 33vw'
                       className='object-cover transition-transform duration-700 ease-out group-hover:scale-105'
                     />
-                    <div className='absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none' />
+                    <div className='absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent pointer-events-none' />
                   </div>
                 </div>
 
                 {/* Info Text Content Block */}
-                <div className='p-6 flex flex-col flex-grow text-center items-center z-10'>
+                <div className='p-6 flex flex-col grow text-center items-center z-10'>
                   {/* Frosted Floating Icon Pin */}
                   <div className='mb-4 p-2.5 rounded-xl border border-slate-200/60 bg-slate-50/80 shadow-2xs group-hover:bg-white transition-colors duration-300'>
                     {b.icon}
@@ -310,7 +310,7 @@ export default function Careers() {
                   <h3 className='font-display text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-blue-600 transition-colors duration-300'>
                     {b.title}
                   </h3>
-                  <p className='text-slate-600 text-sm leading-relaxed max-w-sm flex-grow'>{b.description}</p>
+                  <p className='text-slate-600 text-sm leading-relaxed max-w-sm grow'>{b.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -358,7 +358,7 @@ export default function Careers() {
 
                 <Link
                   href='/careers/apply'
-                  className='px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:opacity-95 transition-opacity text-sm font-semibold flex items-center gap-2 whitespace-nowrap shadow-md shadow-blue-600/10 justify-center'
+                  className='px-5 py-2.5 rounded-xl bg-linear-to-r from-blue-600 to-indigo-600 text-white hover:opacity-95 transition-opacity text-sm font-semibold flex items-center gap-2 whitespace-nowrap shadow-md shadow-blue-600/10 justify-center'
                 >
                   Apply <ArrowRight className='w-4 h-4' />
                 </Link>
