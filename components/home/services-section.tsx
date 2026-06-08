@@ -1,106 +1,9 @@
-// 'use client';
 
-// import React from 'react';
-// import { motion } from 'framer-motion';
-// import { BarChart3, Map, Code2, BookOpen, Zap, Users, ArrowUpRight } from 'lucide-react';
-// import Link from 'next/link';
-
-// interface Service {
-//   icon: React.ReactNode;
-//   title: string;
-//   description: string;
-//   link: string;
-// }
-
-// export default function ServicesSection() {
-//   const services: Service[] = [
-//     { icon: <BarChart3 className="w-7 h-7" />, title: 'Survey Management', description: 'Advanced survey solutions for data collection, analysis, and insights.', link: '/services/survey-management' },
-//     { icon: <Map className="w-7 h-7" />, title: 'GIS Solutions', description: 'Geographic Information Systems for spatial analysis and mapping.', link: '/services/gis-solutions' },
-//     { icon: <Code2 className="w-7 h-7" />, title: 'Software Development', description: 'Custom enterprise software tailored to your business needs.', link: '/services/software-development' },
-//     { icon: <BookOpen className="w-7 h-7" />, title: 'Training Programs', description: 'Comprehensive training and skill development programs.', link: '/services/training' },
-//     { icon: <Zap className="w-7 h-7" />, title: 'SBM Services', description: 'Water management soluctions & clean city Projects, Goverment compliance systems', link: '/services/digital-transformation' },
-//     { icon: <Users className="w-7 h-7" />, title: 'Consulting Services', description: 'Expert consulting for technology and business strategy.', link: '/services/consulting' },
-//   ];
-
-//   const containerVariants = {
-//     hidden: { opacity: 0 },
-//     visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-//   };
-//   const itemVariants = {
-//     hidden: { opacity: 0, y: 22 },
-//     visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
-//   };
-
-//   return (
-//     <section className="relative py-16 md:py-24">
-//       {/* soft band to separate the section from the page */}
-//       <div className="absolute inset-0 -z-10 bg-muted/40" aria-hidden />
-//       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.7 }}
-//           viewport={{ once: true }}
-//           className="text-center mb-14"
-//         >
-//           <p className="eyebrow text-primary mb-3">What we do</p>
-//           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Our Services</h2>
-//           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-//             Comprehensive enterprise solutions designed to drive your business forward
-//           </p>
-//         </motion.div>
-
-//         <motion.div
-//           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-//           variants={containerVariants}
-//           initial="hidden"
-//           whileInView="visible"
-//           viewport={{ once: true }}
-//         >
-//           {services.map((service, idx) => (
-//             <motion.div key={idx} variants={itemVariants} className="group">
-//               <Link href={service.link}>
-//                 <div className="relative h-full p-7 md:p-8 rounded-2xl glass card-hover cursor-pointer overflow-hidden">
-//                   <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden />
-//                   <div className="relative">
-//                     <div className="mb-5 inline-flex p-3.5 rounded-xl bg-linear-to-br from-primary to-accent-glow text-white shadow-lg shadow-primary/25">
-//                       {service.icon}
-//                     </div>
-//                     <h3 className="font-display text-xl font-semibold text-foreground mb-3">{service.title}</h3>
-//                     <p className="text-muted-foreground text-sm leading-relaxed mb-5">{service.description}</p>
-//                     <div className="inline-flex items-center gap-1.5 text-primary font-medium text-sm">
-//                       Learn more
-//                       <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-//                     </div>
-//                   </div>
-//                 </div>
-//               </Link>
-//             </motion.div>
-//           ))}
-//         </motion.div>
-
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.7, delay: 0.2 }}
-//           viewport={{ once: true }}
-//           className="text-center mt-14"
-//         >
-//           <Link href="/services">
-//             <button className="px-8 py-3.5 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25">
-//               Explore All Services
-//             </button>
-//           </Link>
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// }
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { BarChart3, Map, Code2, BookOpen, Zap, Users, ArrowUpRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { BarChart3, Map, Code2, BookOpen, Zap, Users, ArrowUpRight, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -115,6 +18,9 @@ interface Service {
 }
 
 export default function ServicesSection() {
+  // State to manage which image is currently active in the popup modal
+  const [activeImage, setActiveImage] = useState<string | null>(null);
+
   const services: Service[] = [
     { 
       icon: <BarChart3 className="w-5 h-5 text-amber-700" />, 
@@ -183,11 +89,11 @@ export default function ServicesSection() {
 
   return (
     <section className="relative py-20 md:py-28 bg-[#f8fafc] text-slate-800 overflow-hidden">
-      {/* Soft Light-Mode Ambient Glow Elements */}
+      {/* Background Glows */}
       <div className="absolute top-[-5%] left-[-15%] w-[55vw] h-[55vw] rounded-full bg-blue-100/40 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[5%] right-[-15%] w-[55vw] h-[55vw] rounded-full bg-indigo-100/30 blur-[130px] pointer-events-none" />
 
-      {/* Structural Dot Mesh Pattern */}
+      {/* Grid Mesh */}
       <div 
         className="absolute inset-0 opacity-[0.22] pointer-events-none bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:24px_24px]" 
         aria-hidden 
@@ -217,61 +123,60 @@ export default function ServicesSection() {
         >
           {services.map((service, idx) => (
             <motion.div key={idx} variants={itemVariants} className="group">
-              <Link href={service.link} className="block h-full">
-                <div className="relative h-full rounded-3xl border border-slate-200/70 bg-white/70 backdrop-blur-xl hover:bg-white/95 hover:border-slate-300 transition-all duration-500 overflow-hidden cursor-pointer flex flex-col shadow-md shadow-slate-200/20 hover:shadow-xl hover:shadow-slate-200/40">
-                  
-                  {/* Gentle color overlay mapped by service theme */}
-                  <div className={`absolute inset-0 bg-gradient-to-b ${service.gradient} opacity-100 pointer-events-none`} />
+              {/* Entire Card Click Trigger */}
+              <div 
+                onClick={() => setActiveImage(service.image)}
+                className="relative h-full rounded-3xl border border-slate-200/70 bg-white/70 backdrop-blur-xl hover:bg-white/95 hover:border-slate-300 transition-all duration-500 overflow-hidden cursor-zoom-in flex flex-col shadow-md shadow-slate-200/20 hover:shadow-xl hover:shadow-slate-200/40"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-b ${service.gradient} opacity-100 pointer-events-none`} />
 
-                  {/* Top Image Frame */}
-                  <div className="p-4 pb-0 relative z-10">
-                    <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-100 border border-slate-100/80 shadow-inner">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 contrast-[1.01]"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
-                    </div>
-                  </div>
-
-                  {/* Information Details Card Body */}
-                  <div className="p-6 flex flex-col flex-grow relative z-10">
-                    <div className="flex items-center justify-between mb-4">
-                      {/* Frosted Small Icon Container Tag */}
-                      <div className={`p-2.5 rounded-xl border shadow-2xs ${service.accentColor}`}>
-                        {service.icon}
-                      </div>
-
-                      {/* Small floating link accent trigger */}
-                      <div className="p-1.5 rounded-lg border border-slate-200 bg-slate-50 group-hover:border-blue-300 group-hover:bg-blue-50/80 transition-colors duration-300">
-                        <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors" />
-                      </div>
-                    </div>
-
-                    <h3 className="font-display text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-blue-600 transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    
-                    <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
-                      {service.description}
-                    </p>
-                    
-                    {/* Learn More Action Line */}
-                    <div className="pt-4 border-t border-slate-100 mt-auto flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors duration-300">
-                      <span>Learn more</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                    </div>
+                {/* Top Image Frame */}
+                <div className="p-4 pb-0 relative z-10">
+                  <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-100 border border-slate-100/80 shadow-inner group/img">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover/img:scale-105 contrast-[1.01]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
                   </div>
                 </div>
-              </Link>
+
+                {/* Card Info Body */}
+                <div className="p-6 flex flex-col flex-grow relative z-10">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className={`p-2.5 rounded-xl border shadow-2xs ${service.accentColor}`}>
+                      {service.icon}
+                    </div>
+
+                    {/* Simple aesthetic indicator (no routing link) */}
+                    <div className="p-1.5 rounded-lg border border-slate-200 bg-slate-50 group-hover:border-blue-300 group-hover:bg-blue-50/80 transition-colors duration-300">
+                      <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors" />
+                    </div>
+                  </div>
+
+                  <h3 className="font-display text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-blue-600 transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+                    {service.description}
+                  </p>
+                  
+                  {/* Clean Text Indicator — Clicking this now safely opens the image modal because it inherits from parent div */}
+                  <div className="pt-4 border-t border-slate-100 mt-auto flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors duration-300">
+                    <span>Learn more</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Global CTA Action Wrapper */}
+        {/* Global CTA button below the cards */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -290,6 +195,46 @@ export default function ServicesSection() {
           </Link>
         </motion.div>
       </div>
+
+      {/* Image Popup Modal Overlay */}
+      <AnimatePresence>
+        {activeImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveImage(null)}
+            className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
+          >
+            {/* Close Button */}
+            <button 
+              onClick={() => setActiveImage(null)}
+              className="absolute top-6 right-6 p-2.5 rounded-full bg-white/10 text-white hover:bg-white/20 border border-white/20 transition-colors duration-200 z-50"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Modal Image Container */}
+            <motion.div
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-5xl w-full aspect-[4/3] md:aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-slate-900"
+            >
+              <Image
+                src={activeImage}
+                alt="Enlarged service preview"
+                fill
+                quality={95}
+                className="object-contain"
+                unoptimized
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
