@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from '@/lib/motion'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -89,6 +89,7 @@ export default function Header() {
         </div>
 
         <button
+          type='button'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className='md:hidden p-2 hover:bg-muted rounded-lg transition-colors'
           aria-label='Toggle menu'
@@ -124,7 +125,10 @@ export default function Header() {
                 )
               })}
               <Link href='/contact' onClick={() => setIsMenuOpen(false)}>
-                <button className='w-full mt-3 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-colors'>
+                <button
+                  type='button'
+                  className='w-full mt-3 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-colors'
+                >
                   Get Started
                 </button>
               </Link>

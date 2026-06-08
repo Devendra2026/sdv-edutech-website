@@ -2,7 +2,7 @@
 
 import GoogleMapEmbed, { OFFICE_ADDRESS } from '@/components/shared/google-map-embed'
 import PageHero from '@/components/shared/page-hero'
-import { motion } from 'framer-motion'
+import { motion } from '@/lib/motion'
 import { CheckCircle2, Clock, Mail, MapPin, Phone, Send } from 'lucide-react'
 import { useState } from 'react'
 
@@ -24,7 +24,7 @@ export default function Contact() {
 
   const contactInfo = [
     { icon: <Phone className='w-5 h-5' />, label: 'Phone', value: '+91 90278 11488', href: 'tel:+919027811488' },
-    
+
     {
       icon: <Mail className='w-5 h-5' />,
       label: 'Email',
@@ -67,9 +67,9 @@ export default function Contact() {
             whileInView='visible'
             viewport={{ once: true }}
           >
-            {contactInfo.map((info, idx) => (
+            {contactInfo.map(info => (
               <motion.a
-                key={idx}
+                key={info.label}
                 href={info.href}
                 variants={item}
                 className='p-6 rounded-2xl glass card-hover text-center group'
@@ -97,8 +97,11 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className='space-y-5'>
                 <div className='grid sm:grid-cols-2 gap-5'>
                   <div>
-                    <label className='block text-sm font-medium text-foreground mb-2'>Full Name *</label>
+                    <label htmlFor='contact-name' className='block text-sm font-medium text-foreground mb-2'>
+                      Full Name *
+                    </label>
                     <input
+                      id='contact-name'
                       type='text'
                       name='name'
                       value={formData.name}
@@ -109,8 +112,11 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label className='block text-sm font-medium text-foreground mb-2'>Email *</label>
+                    <label htmlFor='contact-email' className='block text-sm font-medium text-foreground mb-2'>
+                      Email *
+                    </label>
                     <input
+                      id='contact-email'
                       type='email'
                       name='email'
                       value={formData.email}
@@ -122,8 +128,11 @@ export default function Contact() {
                   </div>
                 </div>
                 <div>
-                  <label className='block text-sm font-medium text-foreground mb-2'>Company</label>
+                  <label htmlFor='contact-company' className='block text-sm font-medium text-foreground mb-2'>
+                    Company
+                  </label>
                   <input
+                    id='contact-company'
                     type='text'
                     name='company'
                     value={formData.company}
@@ -133,8 +142,11 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label className='block text-sm font-medium text-foreground mb-2'>Message *</label>
+                  <label htmlFor='contact-message' className='block text-sm font-medium text-foreground mb-2'>
+                    Message *
+                  </label>
                   <textarea
+                    id='contact-message'
                     name='message'
                     value={formData.message}
                     onChange={handleChange}

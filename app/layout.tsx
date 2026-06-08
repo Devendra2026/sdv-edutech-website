@@ -1,3 +1,4 @@
+import { MotionProvider } from '@/components/providers/motion-provider'
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Sora } from 'next/font/google'
@@ -34,7 +35,7 @@ export default function RootLayout({
         {/* Site-wide background theme */}
         <div className='site-bg' aria-hidden='true' />
         <div className='site-grain' aria-hidden='true' />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

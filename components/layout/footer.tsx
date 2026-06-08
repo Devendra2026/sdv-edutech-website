@@ -195,19 +195,28 @@ export default function Footer() {
 
         {/* Bottom Footer */}
         <div className='flex flex-col md:flex-row justify-between items-center gap-6'>
-          <p className='text-muted-foreground text-xs'>
+          <p className='text-muted-foreground text-xs' suppressHydrationWarning>
             &copy; {new Date().getFullYear()} Sdv Edutech Private Limited. All rights reserved.
           </p>
           <div className='flex gap-8'>
-            <a href='#' className='text-muted-foreground hover:text-primary transition-colors text-xs'>
+            <Link
+              href='/privacy-policy'
+              className='text-muted-foreground hover:text-primary transition-colors text-xs'
+            >
               Privacy Policy
-            </a>
-            <a href='#' className='text-muted-foreground hover:text-primary transition-colors text-xs'>
+            </Link>
+            <Link
+              href='/terms-of-service'
+              className='text-muted-foreground hover:text-primary transition-colors text-xs'
+            >
               Terms of Service
-            </a>
-            <a href='#' className='text-muted-foreground hover:text-primary transition-colors text-xs'>
+            </Link>
+            <Link
+              href='/cookie-policy'
+              className='text-muted-foreground hover:text-primary transition-colors text-xs'
+            >
               Cookie Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>

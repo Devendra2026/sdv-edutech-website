@@ -2,7 +2,7 @@
 
 // import PageHero from '@/components/shared/page-hero'
 // import SectionHeading from '@/components/shared/section-heading'
-// import { motion } from 'framer-motion'
+// import { motion } from '@/lib/motion'
 // import { ArrowRight, Banknote, MapPin, TrendingUp, Users2, Wallet } from 'lucide-react'
 // import Image from 'next/image'
 // import Link from 'next/link'
@@ -15,7 +15,7 @@
 //   { title: 'Office Assistant', location: 'Agra',  dept: 'Office Administration' },
 //   { title: 'Data Entry Operator', location: 'Agra',  dept: 'Data Management' },
 //   { title:  'Field Supervisor', location: 'Agra', dept: 'Field Operations' },
-  
+
 // ]
 
 // const benefits = [
@@ -129,7 +129,7 @@
 //                       <MapPin className='w-4 h-4 text-primary' />
 //                       {job.location}
 //                     </div>
-                    
+
 //                   </div>
 //                 </div>
 //                 <Link
@@ -173,7 +173,7 @@
 
 import PageHero from '@/components/shared/page-hero'
 import SectionHeading from '@/components/shared/section-heading'
-import { motion } from 'framer-motion'
+import { motion } from '@/lib/motion'
 import { ArrowRight, MapPin, TrendingUp, Users2, Wallet } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -214,7 +214,8 @@ const benefits: Benefit[] = [
   {
     icon: <Users2 className='w-5 h-5 text-purple-600' />,
     title: 'Collaborative Culture',
-    description: 'Work hand-in-hand with brilliant multidisciplinary engineering squads on meaningful, large-scale systems.',
+    description:
+      'Work hand-in-hand with brilliant multidisciplinary engineering squads on meaningful, large-scale systems.',
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80', // Active design collaboration
     gradient: 'from-purple-500/[0.03] via-fuchsia-500/[0.01] to-transparent',
   },
@@ -231,9 +232,9 @@ export default function Careers() {
       <div className='absolute bottom-[15%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-indigo-100/30 blur-[140px] pointer-events-none' />
 
       {/* Structural Dot Matrix Grid Background */}
-      <div 
-        className='absolute inset-0 opacity-[0.25] pointer-events-none bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:24px_24px]' 
-        aria-hidden 
+      <div
+        className='absolute inset-0 opacity-[0.25] pointer-events-none bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:24px_24px]'
+        aria-hidden
       />
 
       <PageHero
@@ -268,7 +269,7 @@ export default function Careers() {
       <section className='relative py-20 md:py-28 z-10'>
         <div className='max-w-7xl mx-auto px-4 md:px-6 lg:px-8'>
           <SectionHeading eyebrow='Why SDV' title="Why You'll Love Working Here" />
-          
+
           <motion.div
             className='grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12'
             variants={container}
@@ -276,10 +277,10 @@ export default function Careers() {
             whileInView='visible'
             viewport={{ once: true }}
           >
-            {benefits.map((b, i) => (
-              <motion.div 
-                key={i} 
-                variants={item} 
+            {benefits.map(b => (
+              <motion.div
+                key={b.title}
+                variants={item}
                 className='group relative rounded-3xl border border-slate-200/70 bg-white/70 backdrop-blur-xl hover:bg-white/95 hover:border-slate-300 transition-all duration-500 overflow-hidden flex flex-col h-full shadow-md shadow-slate-200/20 hover:shadow-xl hover:shadow-slate-200/40 cursor-default'
               >
                 {/* Dynamic Subtle Gradient overlay */}
@@ -305,13 +306,11 @@ export default function Careers() {
                   <div className='mb-4 p-2.5 rounded-xl border border-slate-200/60 bg-slate-50/80 shadow-2xs group-hover:bg-white transition-colors duration-300'>
                     {b.icon}
                   </div>
-                  
+
                   <h3 className='font-display text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-blue-600 transition-colors duration-300'>
                     {b.title}
                   </h3>
-                  <p className='text-slate-600 text-sm leading-relaxed max-w-sm flex-grow'>
-                    {b.description}
-                  </p>
+                  <p className='text-slate-600 text-sm leading-relaxed max-w-sm flex-grow'>{b.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -328,7 +327,7 @@ export default function Careers() {
             subtitle="Find the role where you'll do your best work"
             align='center'
           />
-          
+
           <motion.div
             className='space-y-4 max-w-4xl mx-auto mt-12'
             variants={container}
@@ -336,9 +335,9 @@ export default function Careers() {
             whileInView='visible'
             viewport={{ once: true }}
           >
-            {jobs.map((job, idx) => (
+            {jobs.map(job => (
               <motion.div
-                key={idx}
+                key={job.title}
                 variants={item}
                 className='p-5 rounded-2xl border border-slate-200/60 bg-white/60 backdrop-blur-md hover:bg-white hover:border-slate-300/80 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 group shadow-xs hover:shadow-md'
               >
@@ -356,7 +355,7 @@ export default function Careers() {
                     <span className='font-medium'>{job.location}</span>
                   </div>
                 </div>
-                
+
                 <Link
                   href='/careers/apply'
                   className='px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:opacity-95 transition-opacity text-sm font-semibold flex items-center gap-2 whitespace-nowrap shadow-md shadow-blue-600/10 justify-center'
@@ -375,9 +374,12 @@ export default function Careers() {
             viewport={{ once: true }}
             className='bg-white/60 backdrop-blur-md border border-slate-200/70 rounded-3xl p-8 md:p-12 text-center space-y-4 mt-16 max-w-4xl mx-auto shadow-sm'
           >
-            <h2 className='font-display text-xl font-bold text-slate-900 tracking-tight'>Don&apos;t see your role listed?</h2>
+            <h2 className='font-display text-xl font-bold text-slate-900 tracking-tight'>
+              Don&apos;t see your role listed?
+            </h2>
             <p className='text-slate-600 text-sm max-w-lg mx-auto'>
-              Send us your resume and we&apos;ll keep you flagged in our primary registry for fast-tracked future operational expansions.
+              Send us your resume and we&apos;ll keep you flagged in our primary registry for fast-tracked future
+              operational expansions.
             </p>
             <div className='pt-2'>
               <Link href='/contact'>

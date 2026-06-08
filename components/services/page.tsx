@@ -2,7 +2,7 @@
 
 // import PageHero from '@/components/shared/page-hero'
 // import SectionHeading from '@/components/shared/section-heading'
-// import { motion } from 'framer-motion'
+// import { motion } from '@/lib/motion'
 // import {
 //   ArrowUpRight,
 //   BarChart3,
@@ -216,14 +216,14 @@
 
 'use client'
 
-import { useState } from 'react'
 import PageHero from '@/components/shared/page-hero'
 import SectionHeading from '@/components/shared/section-heading'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from '@/lib/motion'
 import {
   ArrowUpRight,
   BarChart3,
   BookOpen,
+  CheckCircle2,
   Code2,
   LifeBuoy,
   Map,
@@ -231,12 +231,12 @@ import {
   Rocket,
   Search,
   Users,
-  Zap,
   X,
-  CheckCircle2,
+  Zap,
 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 
 const services = [
   {
@@ -247,9 +247,10 @@ const services = [
     tags: ['Data Capture', 'Dashboards'],
     imageSrc: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80',
     popupDetails: {
-      overview: 'Our survey architecture is engineered to bypass manual capture errors completely. We build secure pipelines parsing thousands of distributed telemetry points synchronously.',
+      overview:
+        'Our survey architecture is engineered to bypass manual capture errors completely. We build secure pipelines parsing thousands of distributed telemetry points synchronously.',
       deliverables: ['Real-time Validation Engine', 'Custom Analytical Dashboards', 'Offline-first Client Apps'],
-    }
+    },
   },
   {
     icon: <Map className='w-6 h-6' />,
@@ -259,9 +260,10 @@ const services = [
     tags: ['Mapping', 'Geospatial'],
     imageSrc: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80',
     popupDetails: {
-      overview: 'Enterprise mapping layers utilizing spatial indexing and polygon processing pipelines. Render complex geographical data smoothly across web and native platforms.',
+      overview:
+        'Enterprise mapping layers utilizing spatial indexing and polygon processing pipelines. Render complex geographical data smoothly across web and native platforms.',
       deliverables: ['Multi-layer Asset Topology', 'High-density Raster Rendering', 'Custom Spatial Geoprocessors'],
-    }
+    },
   },
   {
     icon: <Code2 className='w-6 h-6' />,
@@ -270,9 +272,14 @@ const services = [
     tags: ['Web', 'Cloud'],
     imageSrc: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
     popupDetails: {
-      overview: 'We construct resilient cloud-native architectures optimized for elasticity, zero-downtime hot reloads, and high availability metrics.',
-      deliverables: ['Microservices Integration', 'Highly Available GraphQL/REST APIs', 'Cloud Automation Architectures'],
-    }
+      overview:
+        'We construct resilient cloud-native architectures optimized for elasticity, zero-downtime hot reloads, and high availability metrics.',
+      deliverables: [
+        'Microservices Integration',
+        'Highly Available GraphQL/REST APIs',
+        'Cloud Automation Architectures',
+      ],
+    },
   },
   {
     icon: <BookOpen className='w-6 h-6' />,
@@ -281,9 +288,14 @@ const services = [
     tags: ['LMS', 'Workshops'],
     imageSrc: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80',
     popupDetails: {
-      overview: 'Closing operational technical gaps via tailored curriculum designs. Empower your in-house engineers to run modern frameworks with total precision.',
-      deliverables: ['Custom Learning Environments', 'Hands-on Technical Classrooms', 'Operational Documentation Suites'],
-    }
+      overview:
+        'Closing operational technical gaps via tailored curriculum designs. Empower your in-house engineers to run modern frameworks with total precision.',
+      deliverables: [
+        'Custom Learning Environments',
+        'Hands-on Technical Classrooms',
+        'Operational Documentation Suites',
+      ],
+    },
   },
   {
     icon: <Zap className='w-6 h-6' />,
@@ -292,9 +304,14 @@ const services = [
     tags: ['Strategy', 'Automation'],
     imageSrc: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80',
     popupDetails: {
-      overview: 'Architectural blueprints built specifically to assist governmental and regional sanitation structures scale smoothly into digital reporting portals.',
-      deliverables: ['Field Waste Monitoring Interfaces', 'Resource Routing Automation Modules', 'Public Health Analytical Graphs'],
-    }
+      overview:
+        'Architectural blueprints built specifically to assist governmental and regional sanitation structures scale smoothly into digital reporting portals.',
+      deliverables: [
+        'Field Waste Monitoring Interfaces',
+        'Resource Routing Automation Modules',
+        'Public Health Analytical Graphs',
+      ],
+    },
   },
   {
     icon: <Users className='w-6 h-6' />,
@@ -303,9 +320,14 @@ const services = [
     tags: ['Advisory', 'Architecture'],
     imageSrc: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80',
     popupDetails: {
-      overview: 'Strategic advisory planning assessing legacy technology blockages, aligning current structural patterns to secure future target layouts.',
-      deliverables: ['Comprehensive Security & Auditing Scales', 'Modern Data Governance Playbooks', 'Technology Roadmap Timelines'],
-    }
+      overview:
+        'Strategic advisory planning assessing legacy technology blockages, aligning current structural patterns to secure future target layouts.',
+      deliverables: [
+        'Comprehensive Security & Auditing Scales',
+        'Modern Data Governance Playbooks',
+        'Technology Roadmap Timelines',
+      ],
+    },
   },
 ]
 
@@ -315,28 +337,28 @@ const processSteps = [
     step: '01',
     title: 'Discover',
     description: 'We map your goals, data, and constraints to define the right outcomes.',
-    imageSrc: 'https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=600&q=80'
+    imageSrc: 'https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=600&q=80',
   },
   {
     icon: <PenTool className='w-6 h-6' />,
     step: '02',
     title: 'Design',
     description: 'Architecture, UX, and delivery plan tailored to your enterprise.',
-    imageSrc: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80' // Fresh Working UI/UX Design Image
+    imageSrc: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80', // Fresh Working UI/UX Design Image
   },
   {
     icon: <Rocket className='w-6 h-6' />,
     step: '03',
     title: 'Deliver',
     description: 'Agile build and rollout with measurable milestones and zero surprises.',
-    imageSrc: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80'
+    imageSrc: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
   },
   {
     icon: <LifeBuoy className='w-6 h-6' />,
     step: '04',
     title: 'Support',
     description: 'Ongoing optimization, training, and SLA-backed support.',
-    imageSrc: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80'
+    imageSrc: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80',
   },
 ]
 
@@ -393,15 +415,14 @@ export default function Services() {
             whileInView='visible'
             viewport={{ once: true }}
           >
-            {services.map((service, idx) => (
+            {services.map(service => (
               <motion.div
-                key={idx}
+                key={service.title}
                 variants={item}
                 className='group cursor-pointer'
                 onClick={() => setActiveCard(service)}
               >
                 <div className='relative flex flex-col h-full rounded-2xl border border-border/60 glass overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20'>
-                  
                   {/* Top Image Box with Hover Zoom */}
                   <div className='relative w-full aspect-[16/10] overflow-hidden bg-muted'>
                     <Image
@@ -412,7 +433,7 @@ export default function Services() {
                       sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                     />
                     <div className='absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent' />
-                    
+
                     {/* Tags Layered on Bottom-Left of Image */}
                     <div className='absolute bottom-4 left-4 flex flex-wrap gap-1.5'>
                       {service.tags.map(t => (
@@ -444,7 +465,6 @@ export default function Services() {
                       <ArrowUpRight className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
                     </div>
                   </div>
-
                 </div>
               </motion.div>
             ))}
@@ -457,12 +477,12 @@ export default function Services() {
         {activeCard && (
           <div className='fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-background/80 backdrop-blur-md'>
             {/* Modal Backdrop Click Target */}
-            <motion.div 
-              className='absolute inset-0' 
+            <motion.div
+              className='absolute inset-0'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setActiveCard(null)} 
+              onClick={() => setActiveCard(null)}
             />
 
             {/* Modal Container */}
@@ -475,6 +495,7 @@ export default function Services() {
             >
               {/* Sticky Header Close Button */}
               <button
+                type='button'
                 onClick={() => setActiveCard(null)}
                 className='absolute top-4 right-4 z-20 p-2 rounded-full bg-background/80 border border-border text-muted-foreground hover:text-foreground transition-colors hover:shadow-sm'
                 aria-label='Close layout window'
@@ -485,12 +506,7 @@ export default function Services() {
               <div className='grid grid-cols-1 md:grid-cols-12 gap-0'>
                 {/* Visual Cover Half */}
                 <div className='relative md:col-span-5 h-48 md:h-auto min-h-[220px] bg-muted'>
-                  <Image
-                    src={activeCard.imageSrc}
-                    alt={activeCard.title}
-                    fill
-                    className='object-cover'
-                  />
+                  <Image src={activeCard.imageSrc} alt={activeCard.title} fill className='object-cover' />
                   <div className='absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-background via-transparent to-transparent' />
                   <div className='absolute bottom-6 left-6 hidden md:block'>
                     <div className='p-3 bg-background/90 text-primary rounded-xl border border-border w-fit shadow-md'>
@@ -512,7 +528,7 @@ export default function Services() {
                   <h2 className='text-2xl md:text-3xl font-display font-extrabold text-foreground mb-4'>
                     {activeCard.title}
                   </h2>
-                  
+
                   <p className='text-muted-foreground text-sm md:text-base leading-relaxed mb-6'>
                     {activeCard.popupDetails.overview}
                   </p>
@@ -524,8 +540,8 @@ export default function Services() {
                     Key Framework Deliverables
                   </h4>
                   <ul className='space-y-2.5 mb-8'>
-                    {activeCard.popupDetails.deliverables.map((item, idx) => (
-                      <li key={idx} className='flex items-start gap-3 text-sm text-muted-foreground'>
+                    {activeCard.popupDetails.deliverables.map(item => (
+                      <li key={item} className='flex items-start gap-3 text-sm text-muted-foreground'>
                         <CheckCircle2 className='w-4 h-4 text-primary shrink-0 mt-0.5' />
                         <span>{item}</span>
                       </li>
@@ -535,11 +551,15 @@ export default function Services() {
                   {/* Core CTAs inside modal */}
                   <div className='flex flex-wrap items-center gap-4'>
                     <Link href='/contact' onClick={() => setActiveCard(null)} className='w-full sm:w-auto'>
-                      <button className='w-full sm:w-auto px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md shadow-primary/10'>
+                      <button
+                        type='button'
+                        className='w-full sm:w-auto px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md shadow-primary/10'
+                      >
                         Inquire About Asset
                       </button>
                     </Link>
-                    <button 
+                    <button
+                      type='button'
                       onClick={() => setActiveCard(null)}
                       className='w-full sm:w-auto px-6 py-3 border border-border rounded-xl font-medium text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors'
                     >
@@ -561,7 +581,7 @@ export default function Services() {
             title='A Proven Delivery Process'
             subtitle='A transparent, milestone-driven approach from first conversation to long-term support'
           />
-          
+
           <motion.div
             className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'
             variants={container}
@@ -569,10 +589,10 @@ export default function Services() {
             whileInView='visible'
             viewport={{ once: true }}
           >
-            {processSteps.map((p, idx) => (
-              <motion.div 
-                key={idx} 
-                variants={item} 
+            {processSteps.map(p => (
+              <motion.div
+                key={p.title}
+                variants={item}
                 className='group relative flex flex-col h-full rounded-2xl border border-border/60 glass overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20'
               >
                 {/* Process Step Image Container */}
@@ -585,12 +605,12 @@ export default function Services() {
                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw'
                   />
                   <div className='absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent' />
-                  
+
                   {/* Step Number Overlay */}
                   <span className='font-display text-4xl font-extrabold text-foreground/15 absolute top-3 right-4 select-none group-hover:text-primary/20 transition-colors duration-300'>
                     {p.step}
                   </span>
-                  
+
                   {/* Floating Icon inside image box */}
                   <div className='absolute bottom-3 left-4 p-2.5 bg-background/90 text-primary rounded-xl border border-border/40 shadow-sm'>
                     {p.icon}
@@ -602,9 +622,7 @@ export default function Services() {
                   <h3 className='font-display text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-200'>
                     {p.title}
                   </h3>
-                  <p className='text-muted-foreground text-sm leading-relaxed'>
-                    {p.description}
-                  </p>
+                  <p className='text-muted-foreground text-sm leading-relaxed'>{p.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -613,6 +631,7 @@ export default function Services() {
           <div className='text-center mt-14'>
             <Link href='/contact'>
               <motion.button
+                type='button'
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 className='px-8 py-3.5 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25'

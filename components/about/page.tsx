@@ -2,7 +2,7 @@
 
 // import PageHero from '@/components/shared/page-hero'
 // import SectionHeading from '@/components/shared/section-heading'
-// import { motion } from 'framer-motion'
+// import { motion } from '@/lib/motion'
 // import { Award, HeartHandshake, Lightbulb, ShieldCheck } from 'lucide-react'
 // import Image from 'next/image'
 
@@ -148,8 +148,11 @@
 //         </div>
 //       </section>
 
-      {/* Team */}
-{/* <section className='py-16 md:py-24'>
+{
+  /* Team */
+}
+{
+  /* <section className='py-16 md:py-24'>
         <div className='max-w-7xl mx-auto px-4 md:px-6 lg:px-8'>
           <SectionHeading
             eyebrow='Leadership'
@@ -177,15 +180,15 @@
             ))}
           </motion.div>
         </div>
-      </section> */}
+      </section> */
+}
 //     </main>
 //   )
 // }
 
-
 import PageHero from '@/components/shared/page-hero'
 import SectionHeading from '@/components/shared/section-heading'
-import { motion } from 'framer-motion'
+import { motion } from '@/lib/motion'
 import { Award, HeartHandshake, Lightbulb, ShieldCheck } from 'lucide-react'
 import Image from 'next/image'
 
@@ -268,13 +271,13 @@ export default function About() {
               </h2>
               <p className='text-lg text-justify text-muted-foreground leading-relaxed'>
                 Founded in 2022, Sdv Edutech Private Limited began with a simple mission: to help enterprises leverage
-                technology for transformation and sustainable growth. Over the years, we&apos;ve become a trusted partner for
-                organizations across multiple scalable industries.
+                technology for transformation and sustainable growth. Over the years, we&apos;ve become a trusted
+                partner for organizations across multiple scalable industries.
               </p>
               <p className='text-lg text-justify text-muted-foreground leading-relaxed'>
-                Our enterprise expertise spans comprehensive survey management, secure GIS solutions, custom software ecosystems,
-                technical training programs, and regional analytics layouts — combining deep industry workflows with 
-                cutting-edge frameworks to deliver long-term structural value.
+                Our enterprise expertise spans comprehensive survey management, secure GIS solutions, custom software
+                ecosystems, technical training programs, and regional analytics layouts — combining deep industry
+                workflows with cutting-edge frameworks to deliver long-term structural value.
               </p>
             </motion.div>
 
@@ -305,7 +308,7 @@ export default function About() {
       <section className='py-16 md:py-24 bg-muted/30'>
         <div className='max-w-7xl mx-auto px-4 md:px-6 lg:px-8'>
           <SectionHeading eyebrow='What drives us' title='Our Core Values' />
-          
+
           <motion.div
             className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'
             variants={container}
@@ -313,10 +316,10 @@ export default function About() {
             whileInView='visible'
             viewport={{ once: true }}
           >
-            {values.map((v, i) => (
-              <motion.div 
-                key={i} 
-                variants={item} 
+            {values.map(v => (
+              <motion.div
+                key={v.title}
+                variants={item}
                 className='group relative flex flex-col h-full rounded-2xl border border-border/60 glass overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20'
               >
                 {/* Value Card Image Container */}
@@ -330,7 +333,7 @@ export default function About() {
                   />
                   {/* Smooth Gradient Overlay */}
                   <div className='absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent' />
-                  
+
                   {/* Floating Action Icon inside the box */}
                   <div className='absolute bottom-3 left-4 p-2.5 bg-background/90 text-primary rounded-xl border border-border/40 shadow-sm transition-transform duration-300 group-hover:scale-110'>
                     {v.icon}
@@ -342,9 +345,7 @@ export default function About() {
                   <h3 className='font-display text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-200'>
                     {v.title}
                   </h3>
-                  <p className='text-muted-foreground text-sm leading-relaxed'>
-                    {v.description}
-                  </p>
+                  <p className='text-muted-foreground text-sm leading-relaxed'>{v.description}</p>
                 </div>
               </motion.div>
             ))}

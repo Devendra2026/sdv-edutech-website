@@ -2,7 +2,7 @@
 
 // import PageHero from '@/components/shared/page-hero'
 // import ProjectThumb from '@/components/visuals/project-thumb'
-// import { AnimatePresence, motion } from 'framer-motion'
+// import { AnimatePresence, motion } from '@/lib/motion'
 // import { ArrowUpRight } from 'lucide-react'
 // import Image from 'next/image'
 // import { useState } from 'react'
@@ -164,7 +164,7 @@
 
 import PageHero from '@/components/shared/page-hero'
 import ProjectThumb from '@/components/visuals/project-thumb'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from '@/lib/motion'
 import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
