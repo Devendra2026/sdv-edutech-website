@@ -1,7 +1,7 @@
 'use client'
 
-import Footer from '@/components/layout/footer'
-import Header from '@/components/layout/header'
+// import Footer from '@/components/layout/footer'
+// import Header from '@/components/layout/header'
 import { motion } from '@/lib/motion'
 import { ArrowLeft, CheckCircle, Upload } from 'lucide-react'
 import Link from 'next/link'
@@ -53,7 +53,7 @@ export default function CareersApplyPage() {
   if (submitted) {
     return (
       <main className='min-h-screen bg-background'>
-        <Header />
+        {/* <Header /> */}
         <section className='py-24 md:py-32'>
           <div className='max-w-2xl mx-auto px-4 md:px-6'>
             <motion.div
@@ -84,14 +84,14 @@ export default function CareersApplyPage() {
             </motion.div>
           </div>
         </section>
-        <Footer />
+        {/* <Footer /> */}
       </main>
     )
   }
 
   return (
     <main className='min-h-screen bg-background'>
-      <Header />
+      {/* <Header /> */}
 
       {/* Hero Section */}
       <section className='py-12 md:py-16 border-b border-border'>
@@ -293,7 +293,7 @@ export default function CareersApplyPage() {
         </div>
       </section>
 
-      <Footer />
+      {/* <Footer /> */}
     </main>
   )
 }

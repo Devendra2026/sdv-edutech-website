@@ -79,6 +79,16 @@ export default function ServicesSection() {
       gradient: 'from-rose-500/[0.04] via-pink-500/[0.01] to-transparent',
       accentColor: 'border-rose-200 bg-rose-50/60',
     },
+    {
+      icon: <Users className='w-5 h-5 text-rose-700' />,
+      title: 'OutSourcing & ManPower Servics',
+      description:
+        'Vetted Talent Deployment Frameworks, Automated Workforce Scheduling Modules, Operational Productivity Analytical Graphs',
+      link: '/services/OutSourcing & ManPower Service',
+      image: 'https://tse4.mm.bing.net/th/id/OIP.-gaMupK9a6UkhDvZIkuwdwHaEx?pid=Api&h=220&P=0',
+      gradient: 'from-rose-500/[0.04] via-pink-500/[0.01] to-transparent',
+      accentColor: 'border-rose-200 bg-rose-50/60',
+    },
   ]
 
   const containerVariants = {

@@ -329,6 +329,21 @@ const services = [
       ],
     },
   },
+  {
+    icon: <Users className='w-6 h-6' />,
+    title: 'OutSourcing & ManPower Services',
+    description: 'We provide vetted, on-demand workforce solutions so you can focus entirely on growing your core business.',
+    tags: ['ManPower Services', 'OutSourcing Solution'],
+    imageSrc: 'https://tse4.mm.bing.net/th/id/OIP.-gaMupK9a6UkhDvZIkuwdwHaEx?pid=Api&h=220&P=0',
+    popupDetails: {
+      overview:
+        'Strategic workforce blueprints built specifically to assist growing enterprises and regional businesses scale their operations smoothly through flexible, on-demand staffing pipelines.',
+      deliverables: [
+        'Vetted Talent Deployment Frameworks', 'Automated Workforce Scheduling Modules', 'Operational Productivity Analytical Graphs',
+      ],
+    },
+  },
+
 ]
 
 const processSteps = [
@@ -375,7 +390,7 @@ export default function Services() {
         eyebrow='What we do'
         title='Enterprise Services that Scale'
         highlight='Scale'
-        description='Comprehensive IT and geospatial solutions engineered to move your organization forward — from data capture to full digital transformation.'
+        description='We transform your complex spatial data into actionable business intelligence by engineering custom software and advanced GIS mapping solutions. By automating manual workflows and modernizing legacy infrastructure, we eliminate operational friction and transition your systems into secure, future-ready cloud architectures.'
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
         visual={
           <div className='relative w-full max-w-lg mx-auto lg:mx-0 lg:ml-auto'>

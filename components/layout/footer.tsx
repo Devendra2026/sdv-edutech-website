@@ -3,7 +3,7 @@
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { FaInstagram, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 
 export default function Footer() {
   return (
@@ -31,6 +31,18 @@ export default function Footer() {
                 className='w-9 h-9 rounded-full border border-border hover:border-primary hover:bg-primary/5 flex items-center justify-center transition-all text-foreground hover:text-primary'
               >
                 <FaTwitter className='w-4 h-4' />
+              </Link>
+              <Link
+                href='#'
+                className='w-9 h-9 rounded-full border border-border hover:border-primary hover:bg-primary/5 flex items-center justify-center transition-all text-foreground hover:text-primary'
+              >
+                <FaInstagram className='w-4 h-4' />
+              </Link>
+              <Link
+                href='#'
+                className='w-9 h-9 rounded-full border border-border hover:border-primary hover:bg-primary/5 flex items-center justify-center transition-all text-foreground hover:text-primary'
+              >
+                <FaWhatsapp className='w-4 h-4' />
               </Link>
             </div>
           </div>
@@ -152,6 +164,24 @@ export default function Footer() {
                   className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
                 >
                   Gallery
+                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='/portfolio'
+                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
+                >
+                   Portfolio
+                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='/services'
+                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
+                >
+                  Services
                   <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
                 </Link>
               </li>
