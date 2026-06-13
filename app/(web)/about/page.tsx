@@ -1,19 +1,13 @@
-import About from '@/components/about/page'
-import { Metadata } from 'next/types'
+import About from '@/components/about/content'
+import { createPageMetadata } from '@/lib/metadata'
 
-export const metadata: Metadata = {
-  title: 'About',
+export const metadata = createPageMetadata({
+  title: 'About Us',
   description:
-    'Enterprise technology, survey management, GIS solutions, software development, and digital transformation services.',
-  icons: {
-    icon: '/logo.png',
-  },
-}
+    'Learn about Sdv Edutech — MSME certified technology partner delivering GIS, software, and digital transformation across India since 2021.',
+  path: '/about',
+})
 
 export default function AboutPage() {
-  return (
-    <main className='min-h-screen'>
-      <About />
-    </main>
-  )
+  return <About />
 }

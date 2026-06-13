@@ -1,22 +1,13 @@
+import Portfolio from '@/components/portfolio/content'
+import { createPageMetadata } from '@/lib/metadata'
 
-
-import Portfolio from '@/components/portfolio/page'
-import { Metadata } from 'next/types'
-
-
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Portfolio',
   description:
-    'Enterprise technology, survey management, GIS solutions, software development, and digital transformation services.',
-  icons: {
-    icon: '/logo.png',
-  },
-}
+    'Explore SDV Edutech project portfolio — GIS mapping, survey platforms, enterprise software, and digital transformation case studies.',
+  path: '/portfolio',
+})
 
 export default function PortfolioPage() {
-  return (
-    <main className='min-h-screen'>
-      <Portfolio />
-    </main>
-  )
+  return <Portfolio />
 }

@@ -1,19 +1,13 @@
-import Services from '@/components/services/page'
-import { Metadata } from 'next/types'
+import Services from '@/components/services/content'
+import { createPageMetadata } from '@/lib/metadata'
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Services',
   description:
-    'Enterprise technology, survey management, GIS solutions, software development, and digital transformation services.',
-  icons: {
-    icon: '/logo.png',
-  },
-}
+    'Survey management, GIS solutions, software development, training programs, SBM services, consulting, and manpower outsourcing for enterprise and government.',
+  path: '/services',
+})
 
 export default function ServicesPage() {
-  return (
-    <main className='min-h-screen'>
-      <Services />
-    </main>
-  )
+  return <Services />
 }

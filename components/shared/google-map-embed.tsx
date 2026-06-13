@@ -21,6 +21,7 @@ export default function GoogleMapEmbed({
           className='absolute inset-0 w-full h-full border-0'
           loading='lazy'
           referrerPolicy='no-referrer-when-downgrade'
+          sandbox='allow-scripts allow-popups allow-popups-to-escape-sandbox allow-forms'
           allowFullScreen
         />
       </div>

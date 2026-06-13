@@ -1,252 +1,136 @@
-'use client'
-
-import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
+import { CtaButton } from '@/components/marketing/cta-button'
+import { footerServiceLinks, navLinks, siteConfig, socialLinks } from '@/lib/site-content'
+import { ArrowRight, Globe, Mail, MapPin, Phone, Share2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaInstagram, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa'
+
+const companyLinks = navLinks.filter(l =>
+  ['/about', '/clients', '/careers', '/contact', '/gallery', '/portfolio', '/services'].includes(l.href),
+)
 
 export default function Footer() {
+  const year = new Date().getFullYear()
+
   return (
     <footer className='relative border-t border-border/60 mt-24 glass-header'>
       <div className='max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-20'>
-        {/* Main Footer Grid */}
         <div className='grid grid-cols-1 md:grid-cols-12 gap-12 mb-16'>
-          {/* Brand Section */}
           <div className='md:col-span-3'>
-            <div className='flex items-center gap-2 mb-6'>
-              <Image src='/logo.jpeg' alt='SDV EDUTECH' width={1280} height={622} className='h-15 w-auto rounded-md' />
-            </div>
-            <p className='text-muted-foreground text-sm leading-relaxed mb-6'>
+            <Link href='/' className='inline-block mb-6'>
+              <Image
+                src={siteConfig.logo}
+                alt={siteConfig.name}
+                width={160}
+                height={48}
+                className='h-14 w-auto rounded-md'
+                style={{ width: 'auto' }}
+              />
+            </Link>
+            <p className='text-muted-foreground text-sm leading-relaxed mb-6 max-w-xs'>
               Transforming enterprises through innovative technology and digital solutions.
             </p>
             <div className='flex gap-3'>
-              <Link
-                href='#'
-                className='w-9 h-9 rounded-full border border-border hover:border-primary hover:bg-primary/5 flex items-center justify-center transition-all text-foreground hover:text-primary'
-              >
-                <FaLinkedin className='w-4 h-4' />
-              </Link>
-              <Link
-                href='#'
-                className='w-9 h-9 rounded-full border border-border hover:border-primary hover:bg-primary/5 flex items-center justify-center transition-all text-foreground hover:text-primary'
-              >
-                <FaTwitter className='w-4 h-4' />
-              </Link>
-              <Link
-                href='#'
-                className='w-9 h-9 rounded-full border border-border hover:border-primary hover:bg-primary/5 flex items-center justify-center transition-all text-foreground hover:text-primary'
-              >
-                <FaInstagram className='w-4 h-4' />
-              </Link>
-              <Link
-                href='#'
-                className='w-9 h-9 rounded-full border border-border hover:border-primary hover:bg-primary/5 flex items-center justify-center transition-all text-foreground hover:text-primary'
-              >
-                <FaWhatsapp className='w-4 h-4' />
-              </Link>
+              {[
+                { href: socialLinks.linkedin, label: 'LinkedIn', Icon: Share2 },
+                { href: socialLinks.instagram, label: 'Instagram', Icon: Globe },
+              ].map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label={label}
+                  className='w-11 h-11 rounded-full border border-border hover:border-primary hover:bg-primary/5 flex items-center justify-center transition-all text-foreground hover:text-primary'
+                >
+                  <Icon className='w-4 h-4' />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Services Links */}
           <div className='md:col-span-2'>
             <h4 className='font-semibold text-foreground text-sm mb-6'>Services</h4>
             <ul className='space-y-3'>
-              
-              <li>
-                <Link
-                  href='/services'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  GIS Solutions
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/services'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  Software Development
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/services'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  Training Programs
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/services'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  SBM - SWM Services
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/services'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  OutSourcing / ManPower Services
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/services'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  Payroll Management
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/services'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  Consulting Services
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
+              {footerServiceLinks.map(item => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group min-h-11'
+                  >
+                    {item.label}
+                    <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Company Links */}
           <div className='md:col-span-2'>
             <h4 className='font-semibold text-foreground text-sm mb-6'>Company</h4>
             <ul className='space-y-3'>
-              <li>
-                <Link
-                  href='/about'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  About Us
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/clients'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  Clients
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/careers'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  Careers
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/contact'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  Contact
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-               <li>
-                <Link
-                  href='/gallery'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  Gallery
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/portfolio'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                   Portfolio
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/services'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group'
-                >
-                  Services
-                  <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
-                </Link>
-              </li>
+              {companyLinks.map(link => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className='text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group min-h-11'
+                  >
+                    {link.label}
+                    <ArrowRight className='w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity' />
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div className='md:col-span-3'>
             <h4 className='font-semibold text-foreground text-sm mb-6'>Get in Touch</h4>
             <div className='space-y-4'>
               <div className='flex gap-3'>
-                <Mail className='w-4 h-4 text-primary shrink-0 mt-0.5' />
+                <Mail className='w-4 h-4 text-primary shrink-0 mt-1' aria-hidden />
                 <a
-                  href='mailto:info@sdvedutech.in'
+                  href={`mailto:${siteConfig.email}`}
                   className='text-muted-foreground hover:text-primary transition-colors text-sm'
                 >
-                  info@sdvedutech.in
+                  {siteConfig.email}
                 </a>
               </div>
               <div className='flex gap-3'>
-                <Phone className='w-4 h-4 text-primary shrink-0 mt-0.5' />
+                <Phone className='w-4 h-4 text-primary shrink-0 mt-1' aria-hidden />
                 <a
                   href='tel:+919027811488'
                   className='text-muted-foreground hover:text-primary transition-colors text-sm'
                 >
-                  +91 90278 11488
+                  {siteConfig.phone}
                 </a>
               </div>
               <div className='flex gap-3'>
-                <MapPin className='w-4 h-4 text-primary shrink-0 mt-0.5' />
-                <span className='text-muted-foreground text-sm'>
-                  STPI, IT Park, Sector-D, Shahstripuram, Sikandra, Agra, Uttar Pradesh, India - 282007
-                </span>
+                <MapPin className='w-4 h-4 text-primary shrink-0 mt-1' aria-hidden />
+                <span className='text-muted-foreground text-sm'>{siteConfig.address}</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
         <div className='h-px bg-border mb-8' />
 
-        {/* Bottom Footer */}
         <div className='flex flex-col md:flex-row justify-between items-center gap-6'>
-          <p className='text-muted-foreground text-xs' suppressHydrationWarning>
-            &copy; {new Date().getFullYear()} Sdv Edutech Private Limited. All rights reserved.
+          <p className='text-muted-foreground text-xs'>
+            &copy; {year} {siteConfig.legalName}. All rights reserved.
           </p>
-          <div className='flex gap-8'>
-            <Link
-              href='/privacy-policy'
-              className='text-muted-foreground hover:text-primary transition-colors text-xs'
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href='/terms-of-service'
-              className='text-muted-foreground hover:text-primary transition-colors text-xs'
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href='/cookie-policy'
-              className='text-muted-foreground hover:text-primary transition-colors text-xs'
-            >
-              Cookie Policy
-            </Link>
+          <div className='flex flex-wrap justify-center gap-6'>
+            {[
+              { href: '/privacy-policy', label: 'Privacy Policy' },
+              { href: '/terms-of-service', label: 'Terms of Service' },
+              { href: '/cookie-policy', label: 'Cookie Policy' },
+            ].map(link => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className='text-muted-foreground hover:text-primary transition-colors text-xs min-h-11 flex items-center'
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

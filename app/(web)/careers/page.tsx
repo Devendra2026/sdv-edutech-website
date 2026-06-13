@@ -1,22 +1,13 @@
+import Careers from '@/components/careers/content'
+import { createPageMetadata } from '@/lib/metadata'
 
-import Careers from '@/components/careers/page'
-import { Metadata } from 'next/types'
-
-
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Careers',
   description:
-    'Enterprise technology, survey management, GIS solutions, software development, and digital transformation services.',
-  icons: {
-    icon: '/logo.png',
-  },
-}
+    'Join SDV Edutech — careers in software engineering, GIS, surveying, and technology consulting in Agra and across India.',
+  path: '/careers',
+})
 
-export default function Careerspage() {
-  return (
-    <main className='min-h-screen'>
-      <Careers />
-    </main>
-  )
+export default function CareersPage() {
+  return <Careers />
 }
-

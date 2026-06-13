@@ -1,23 +1,13 @@
+import Clients from '@/components/clients/content'
+import { createPageMetadata } from '@/lib/metadata'
 
-
-
-import Clients from '@/components/clients/page'
-import { Metadata } from 'next/types'
-
-
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Clients',
   description:
-    'Enterprise technology, survey management, GIS solutions, software development, and digital transformation services.',
-  icons: {
-    icon: '/logo.png',
-  },
-}
+    'Government and enterprise clients trust SDV Edutech for GIS, survey management, and technology solutions across India.',
+  path: '/clients',
+})
 
-export default function clientsspage() {
-  return (
-    <main className='min-h-screen'>
-      <Clients />
-    </main>
-  )
+export default function ClientsPage() {
+  return <Clients />
 }

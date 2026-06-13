@@ -1,0 +1,4 @@
+export { InputOTP } from './input-otp'
+export { InputOTPGroup } from './input-otp-group'
+export { InputOTPSeparator } from './input-otp-separator'
+export { InputOTPSlot } from './input-otp-slot'

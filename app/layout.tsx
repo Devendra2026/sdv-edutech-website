@@ -1,4 +1,4 @@
-import { MotionProvider } from '@/components/providers/motion-provider'
+import { siteConfig } from '@/lib/site-content'
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Sora } from 'next/font/google'
@@ -6,21 +6,32 @@ import './globals.css'
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '600', '700'],
   variable: '--font-sans',
+  display: 'swap',
 })
 const sora = Sora({
   subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
+  weight: ['600', '700'],
   variable: '--font-display',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'SDV EDUTECH - Enterprise Technology Solutions',
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} - Enterprise Technology Solutions`,
+    template: `%s | ${siteConfig.name}`,
+  },
   description:
     'Enterprise technology, survey management, GIS solutions, software development, and digital transformation services.',
   icons: {
-    icon: '/logo.png',
+    icon: siteConfig.logo,
+  },
+  openGraph: {
+    siteName: siteConfig.name,
+    locale: 'en_IN',
+    type: 'website',
   },
 }
 
@@ -32,10 +43,9 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${jakarta.variable} ${sora.variable}`}>
       <body className='font-sans antialiased relative'>
-        {/* Site-wide background theme */}
         <div className='site-bg' aria-hidden='true' />
         <div className='site-grain' aria-hidden='true' />
-        <MotionProvider>{children}</MotionProvider>
+        {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

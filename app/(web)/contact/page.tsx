@@ -1,22 +1,13 @@
+import Contact from '@/components/contact/content'
+import { createPageMetadata } from '@/lib/metadata'
 
-import Contact from '@/components/contact/page'
-import { Metadata } from 'next/types'
-
-
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Contact',
   description:
-    'Enterprise technology, survey management, GIS solutions, software development, and digital transformation services.',
-  icons: {
-    icon: '/logo.png',
-  },
-}
+    'Get in touch with SDV Edutech in Agra, Uttar Pradesh. Phone, email, and contact form for enterprise technology inquiries.',
+  path: '/contact',
+})
 
 export default function ContactPage() {
-  return (
-    <main className='min-h-screen'>
-      <Contact />
-    </main>
-  )
+  return <Contact />
 }
-

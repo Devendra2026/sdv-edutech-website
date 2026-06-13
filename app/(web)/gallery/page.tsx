@@ -1,23 +1,12 @@
+import PhotoGallery from '@/components/gallery/content'
+import { createPageMetadata } from '@/lib/metadata'
 
-
-import Gallery from '@/components/gallery/page'
-import { Metadata } from 'next/types'
-
-
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Gallery',
-  description:
-    'Enterprise technology, survey management, GIS solutions, software development, and digital transformation services.',
-  icons: {
-    icon: '/logo.png',
-  },
-}
+  description: 'Photo gallery of SDV Edutech projects, certifications, field work, and enterprise deployments.',
+  path: '/gallery',
+})
 
-export default function PhotogalleryPage() {
-  return (
-    <main className='min-h-screen'>
-      <Gallery />
-    </main>
-  )
+export default function GalleryPage() {
+  return <PhotoGallery />
 }
-
