@@ -4,7 +4,7 @@ import { footerServiceLinks, navLinks, siteConfig, socialLinks } from '@/lib/sit
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaInstagram, FaLinkedin , FaTwitter, } from 'react-icons/fa6'
+import { FaInstagram, FaLinkedin , FaTwitter, } from 'react-icons/fa'
 
 const companyLinks = navLinks.filter(l =>
   ['/about', '/clients', '/careers', '/contact', '/gallery', '/portfolio', '/services'].includes(l.href),
