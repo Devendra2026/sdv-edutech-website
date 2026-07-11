@@ -42,7 +42,7 @@ export function MobileNav() {
             )
           })}
           <Button asChild className='mt-4 w-full min-h-11' onClick={() => setOpen(false)}>
-            <Link href='/contact'>Get Started</Link>
+            <Link href='/sign-up'>Sign-Up</Link>
           </Button>
         </nav>
       </SheetContent>

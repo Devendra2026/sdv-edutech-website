@@ -1,3 +1,4 @@
+
 /** @type {import('next').NextConfig} */
 const securityHeaders = [
   { key: 'X-DNS-Prefetch-Control', value: 'on' },
@@ -11,6 +12,8 @@ const securityHeaders = [
 const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
+    qualities: [75, 100], // 👈 Fixes: quality="100" unconfigured warning
+    dangerouslyAllowLocalIP: true, // 👈 Fixes: "resolved to private ip" error
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'sdvedutech.com' },

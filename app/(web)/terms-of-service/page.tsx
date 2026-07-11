@@ -25,10 +25,18 @@ export default function TermsOfServicePage() {
         All content, trademarks, and materials on this site are owned by {siteConfig.legalName} or its licensors and are
         protected by applicable intellectual property laws.
       </p>
+      <h2 className='font-display text-xl font-semibold text-foreground mt-8'>Privacy and Cokkies</h2>
+      <p>
+       Your use of this website is also governed by our Privacy Policy. We may use cookies and similar tracking technologies to analyze website traffic and improve your browsing experience.
+      </p>
       <h2 className='font-display text-xl font-semibold text-foreground mt-8'>Limitation of liability</h2>
       <p>
         We are not liable for indirect or consequential damages arising from use of this website. Service engagements
         are governed by separate written agreements.
+      </p>
+      <h2 className='font-display text-xl font-semibold text-foreground mt-8'>Governing Law and Jurisdiction</h2>
+      <p>
+       These terms shall be governed by and construed in accordance with the laws of India. Any disputes arising out of or in connection with this website shall be subject to the exclusive jurisdiction of the courts in [Agra,UP], India.
       </p>
     </LegalPage>
   )

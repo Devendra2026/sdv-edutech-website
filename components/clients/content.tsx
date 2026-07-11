@@ -76,6 +76,7 @@ export default function Clients() {
                       src={client.logo}
                       alt={client.name}
                       fill
+                      unoptimized
                       className='object-contain'
                       sizes='(max-width: 640px) 50vw, 140px'
                     />
