@@ -3,7 +3,7 @@ import PageHeroStatic from '@/components/shared/page-hero-static'
 import { PortfolioGrid } from './portfolio-grid'
 
 const PortfolioHeroVisual = createPageHeroVisual(
-  '/images/portfolio-hero.png',
+  '/images/portfolio.jpeg',
   'Enterprise technology portfolio',
 )
 

@@ -33,7 +33,7 @@ const values = [
 ]
 
 const AboutHeroVisual = createPageHeroVisual(
-  '/images/about-hero.png',
+  '/images/about.jpeg',
   'SDV Edutech office and team',
   'aspect-square',
 )

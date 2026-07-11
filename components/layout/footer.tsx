@@ -1,10 +1,8 @@
-
-import { CtaButton } from '@/components/marketing/cta-button'
 import { footerServiceLinks, navLinks, siteConfig, socialLinks } from '@/lib/site-content'
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaInstagram, FaLinkedin , FaTwitter, } from 'react-icons/fa'
+import { FaInstagram, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 
 const companyLinks = navLinks.filter(l =>
   ['/about', '/clients', '/careers', '/contact', '/gallery', '/portfolio', '/services'].includes(l.href),
@@ -31,13 +29,14 @@ export default function Footer() {
             <p className='text-muted-foreground text-sm leading-relaxed mb-6 max-w-xs'>
               Transforming enterprises through innovative technology and digital solutions.
             </p>
-            
+
             {/* Social Icons Section */}
             <div className='flex gap-3'>
               {[
-                { href: 'https://www.linkedin.com/company/131823925/', label: 'LinkedIn', Icon: FaLinkedin },
+                { href: '', label: 'LinkedIn', Icon: FaLinkedin },
                 { href: socialLinks?.instagram || '#', label: 'Instagram', Icon: FaInstagram },
-                { href: socialLinks?.twitter || '#', label: 'Twitter', Icon: FaTwitter },  
+                { href: socialLinks?.twitter || '#', label: 'Twitter', Icon: FaTwitter },
+                { href: socialLinks?.whatsapp || '#', label: 'Whatsapp', Icon: FaWhatsapp },
               ].map(({ href, label, Icon }) => (
                 <a
                   key={label}

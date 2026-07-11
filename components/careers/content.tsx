@@ -35,7 +35,7 @@ const benefits = [
   },
 ]
 
-const CareersHeroVisual = createPageHeroVisual('/images/careers-hero.png', 'Careers at SDV Edutech')
+const CareersHeroVisual = createPageHeroVisual('/images/carrer.jpeg', 'Careers at SDV Edutech')
 
 export default function Careers() {
   return (

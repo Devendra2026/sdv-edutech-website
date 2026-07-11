@@ -3,7 +3,7 @@ import PageHeroStatic from '@/components/shared/page-hero-static'
 import { ServicesGrid, ServicesProcess } from './services-interactive'
 
 const ServicesHeroVisual = createPageHeroVisual(
-  '/images/services-hero.png',
+  '/images/service.jpeg',
   'Team collaborating on technology solutions',
 )
 

@@ -6,7 +6,7 @@ export const siteConfig = {
   phone: '+91 90278 11488',
   address: '01, FF, STPI, IT Park, Sector-D, Shahstripuram, Sikandra, Agra, Uttar Pradesh, India - 282007',
   logo: '/logo.png',
-  heroImage: '/images/hero-consulting.jpg',
+  heroImage: '/images/home-image.jpg',
 } as const
 
 export const companyStats = {
