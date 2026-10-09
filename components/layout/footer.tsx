@@ -111,6 +111,13 @@ export default function Footer() {
                 <MapPin className='w-4 h-4 text-primary shrink-0 mt-1' aria-hidden />
                 <span className='text-muted-foreground text-sm'>{siteConfig.address}</span>
               </div>
+              <div className='flex gap-3'>
+                <MapPin className='w-4 h-4 text-primary shrink-0 mt-1' aria-hidden />
+                <div className='text-sm'>
+                  <p className='font-medium text-foreground'>Registered Office</p>
+                  <p className='text-muted-foreground'>{siteConfig.registeredAddress}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

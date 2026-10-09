@@ -5,20 +5,16 @@ import Link from 'next/link'
 
 const clients = [
   {
-    name: 'Ministry of Housing and Urban Affairs',
-    logo: 'https://niua.in/c-cube/sites/all/themes/zap/images/cool-city/mohua.png',
+    name: 'Nagar Panchayat Chhata, Mathura',
+    logo: '/government.png',
   },
   {
-    name: 'Urban Development Department, Government of Uttar Pradesh',
-    logo: 'https://tse4.mm.bing.net/th/id/OIP.yDz-fvvTafglQELULd7X0gHaHa?pid=Api&h=220&P=0',
+    name: 'Nagar Panchayat Jyoti Khudiya, Mainpuri',
+    logo: '/government.png',
   },
   {
-    name: 'National Skill Development Corporation (NSDC)',
-    logo: 'https://digitallearning.eletsonline.com/wp-content/uploads/2018/01/nsdc-logo-ss.jpg',
-  },
-  {
-    name: 'Skill India Foundation',
-    logo: 'https://skillsindiafoundation.in/logo/logo.jpg',
+    name: 'Nagar Panchayat Raya, Mathura',
+    logo: '/government.png',
   },
 ]
 

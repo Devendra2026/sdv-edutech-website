@@ -5,6 +5,7 @@ export const siteConfig = {
   email: 'info@sdvedutech.in',
   phone: '+91 90278 11488',
   address: '01, FF, STPI, IT Park, Sector-D, Shahstripuram, Sikandra, Agra, Uttar Pradesh, India - 282007',
+  registeredAddress: '70, Mittal Colony, Ikon City, Near Maghtai, Agra - 283105 (U.P.)',
   logo: '/logo.png',
   heroImage: '/images/home-image.jpg',
 } as const
