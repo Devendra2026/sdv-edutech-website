@@ -8,6 +8,7 @@ const slides = [
   { src: "/software.png", alt: "Software" },
   { src: "/sdv.png", alt: "SDV" },
   { src: "/gis.png", alt: "GIS" },
+   { src: "/Sbm.png", alt: "SBM" },
 ];
 
 export default function HomePage() {
