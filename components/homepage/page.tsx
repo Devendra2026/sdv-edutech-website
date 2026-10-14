@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 
 const slides = [
   { src: "/software.png", mobileSrc: "/software-mobile.png", alt: "Software" },
@@ -30,13 +29,6 @@ export default function HomePage() {
 
   return (
     <main className="showcase" aria-label="SDV Edutech image slider">
-      <header className="showcase-header">
-        <a href="/" className="showcase-logo" aria-label="SDV Edutech Homepage">
-          <img className="brand-logo" src="/logo.png" alt="SDV Edutech Logo" />
-        </a>
-        <Navbar />
-      </header>
-
       {/* Slider Left Arrow */}
       <button
         className="slider-arrow slider-arrow-prev"
@@ -116,10 +108,10 @@ export default function HomePage() {
         />
       </div>
 
-      <Footer
+      {/* <Footer
         isPaused={isPaused}
         onToggleSlideshow={() => setIsPaused((paused) => !paused)}
-      />
+      /> */}
     </main>
   );
 }
