@@ -87,6 +87,7 @@ button { color: inherit; font: inherit; }
   display: flex;
   align-items: center;
 }
+.mobile-menu-toggle { display: none; }
 .nav-list {
   display: flex;
   align-items: center;
@@ -253,6 +254,31 @@ button { color: inherit; font: inherit; }
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.3);
 }
+.slider-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 11px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+.slider-toggle:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.38);
+  transform: translateY(-1px);
+}
+.slider-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
 
 .footer-location {
   display: flex;
@@ -293,6 +319,10 @@ button { color: inherit; font: inherit; }
     width: 28px;
     height: 28px;
   }
+  .slider-toggle {
+    min-height: 28px;
+    padding: 0 8px;
+  }
   .slider-arrow {
     width: 38px;
     height: 38px;
@@ -301,15 +331,103 @@ button { color: inherit; font: inherit; }
 
 @media (max-width: 540px) {
   .showcase-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .showcase-nav {
+    position: relative;
+    flex: 0 0 auto;
+  }
+  .mobile-menu-toggle {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 13px;
+    background: rgba(10, 15, 12, .74);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .22);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .mobile-menu-toggle:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+  .menu-icon {
+    display: grid;
+    gap: 4px;
+  }
+  .menu-icon span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+  .menu-icon-open span:first-child { transform: translateY(6px) rotate(45deg); }
+  .menu-icon-open span:nth-child(2) { opacity: 0; }
+  .menu-icon-open span:last-child { transform: translateY(-6px) rotate(-45deg); }
+  .showcase-nav .nav-list {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 30;
+    display: flex;
+    min-width: 180px;
+    max-width: calc(100vw - 24px);
     flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    align-items: stretch;
+    gap: 3px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 15px;
+    background: rgba(12, 18, 15, .94);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, .35);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-7px);
+    transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+  }
+  .showcase-nav .nav-list-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .showcase-nav .nav-button {
+    display: block;
+    padding: 11px 13px;
+    border-radius: 9px;
+    font-size: 14px;
+  }
+  .showcase-nav .nav-button:hover { transform: none; }
+
+  .brand-logo {
+    height: 42px;
   }
   .showcase-footer {
     padding: 0 12px;
     font-size: 11px;
   }
   .footer-company {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .slider-toggle {
+    width: 28px;
+    padding: 0;
+  }
+  .slider-toggle span {
     display: none;
   }
 }
@@ -753,4 +871,88 @@ button { color: inherit; font: inherit; }
 }
 @media (max-width: 540px) {
   .contact-success { min-height: 420px; padding: 24px; }
+}
+
+/* Small-screen layout refinements */
+@media (max-width: 768px) {
+  /* Preserve every part of each homepage slide on narrow screens. */
+  .slide-image {
+    object-fit: contain !important;
+    object-position: center;
+  }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+  /* Portrait slide files include a full-frame backdrop and the complete source image. */
+  .slide-image { object-fit: cover !important; }
+}
+
+@media (max-width: 540px) {
+  .showcase {
+    min-height: 100svh;
+    height: 100svh;
+    background: #202a26;
+  }
+  .slide {
+    background: #202a26;
+  }
+  .slide-image {
+    object-fit: contain;
+    object-position: center;
+  }
+  .showcase-header {
+    top: max(12px, env(safe-area-inset-top));
+    align-items: center;
+    gap: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .brand-logo { height: 42px; }
+  .nav-list {
+    max-width: calc(100vw - 20px);
+    gap: 0;
+    padding: 4px;
+  }
+  .nav-button {
+    padding: 7px clamp(8px, 2.5vw, 12px);
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .slider-arrow-prev { left: 10px; }
+  .slider-arrow-next { right: 10px; }
+  .slide-dots-indicator {
+    bottom: calc(clamp(48px, 6vh, 56px) + 12px);
+  }
+  .showcase-footer {
+    bottom: env(safe-area-inset-bottom, 0px);
+    min-height: 48px;
+    height: auto;
+    gap: 8px;
+    padding: 6px 10px;
+  }
+  .footer-socials { gap: 6px; }
+  .footer-location { gap: 4px; white-space: nowrap; font-size: 10px; }
+  .location-icon { width: 13px; height: 13px; }
+
+  .contact-page { overflow: visible; padding-bottom: 24px; }
+  .contact-header { top: max(12px, env(safe-area-inset-top)); }
+  .contact-main { width: calc(100% - 24px); padding-top: 148px; }
+  .contact-layout { gap: 16px; }
+  .contact-info-card,
+  .contact-form { border-radius: 16px; }
+  .contact-map { height: 170px; }
+
+  .about-content { padding-top: 148px; }
+  .about-background {
+    background-position: center top;
+    background-size: contain;
+  }
+}
+
+@media (max-width: 360px) {
+  .showcase-header { top: 10px; }
+  .nav-button { padding-right: 7px; padding-left: 7px; font-size: 11px; }
+  .slider-arrow { width: 34px; height: 34px; }
+  .footer-location { font-size: 9px; }
+  .contact-main { width: calc(100% - 20px); padding-top: 140px; }
 }

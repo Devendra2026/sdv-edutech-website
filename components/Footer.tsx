@@ -1,6 +1,11 @@
 import React from "react";
 
-export default function Footer() {
+interface FooterProps {
+  isPaused: boolean;
+  onToggleSlideshow: () => void;
+}
+
+export default function Footer({ isPaused, onToggleSlideshow }: FooterProps) {
   return (
     <footer className="showcase-footer" aria-label="Site footer">
       {/* Left: Social Icons */}
@@ -57,6 +62,26 @@ export default function Footer() {
         </svg>
         <span>Agra, Uttar Pradesh</span>
       </div>
+
+      <button
+        type="button"
+        className="slider-toggle"
+        onClick={onToggleSlideshow}
+        aria-pressed={isPaused}
+        aria-label={isPaused ? "Resume slideshow" : "Pause slideshow"}
+        title={isPaused ? "Resume slideshow" : "Pause slideshow"}
+      >
+        {isPaused ? (
+          <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true">
+            <path d="M4 2.8a.8.8 0 0 1 1.22-.68l7.1 4.4a1.75 1.75 0 0 1 0 2.96l-7.1 4.4A.8.8 0 0 1 4 13.2z" />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true">
+            <path d="M4 2.5A1.5 1.5 0 0 1 5.5 4v8a1.5 1.5 0 0 1-3 0V4A1.5 1.5 0 0 1 4 2.5m8 0A1.5 1.5 0 0 1 13.5 4v8a1.5 1.5 0 0 1-3 0V4A1.5 1.5 0 0 1 12 2.5" />
+          </svg>
+        )}
+        <span>{isPaused ? "Play" : "Pause"}</span>
+      </button>
 
       {/* Right: Company Name */}
       <div className="footer-company">

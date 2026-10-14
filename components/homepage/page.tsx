@@ -5,21 +5,24 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const slides = [
-  { src: "/software.png", alt: "Software" },
-  { src: "/sdv.png", alt: "SDV" },
-  { src: "/gis.png", alt: "GIS" },
-   { src: "/sbm.png", alt: "SBM" },
+  { src: "/software.png", mobileSrc: "/software-mobile.png", alt: "Software" },
+  { src: "/sdv.png", mobileSrc: "/sdv-mobile.png", alt: "SDV" },
+  { src: "/gis.png", mobileSrc: "/gis-mobile.png", alt: "GIS" },
+  { src: "/sbm.png", mobileSrc: "/sbm-mobile.png", alt: "SBM" },
 ];
 
 export default function HomePage() {
   const [active, setActive] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
+    if (isPaused) return;
+
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % slides.length);
     }, 5000);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [isPaused]);
 
   const move = (direction: number) => {
     setActive((current) => (current + direction + slides.length) % slides.length);
@@ -62,7 +65,13 @@ export default function HomePage() {
           key={slide.src}
           aria-hidden={active !== index}
         >
-          <img className="slide-image" src={slide.src} alt={slide.alt} />
+          <picture>
+            <source
+              media="(max-width: 768px) and (orientation: portrait)"
+              srcSet={slide.mobileSrc}
+            />
+            <img className="slide-image" src={slide.src} alt={slide.alt} />
+          </picture>
         </div>
       ))}
 
@@ -100,9 +109,17 @@ export default function HomePage() {
         ))}
       </div>
 
-      <div className="progress-track" aria-hidden="true"><span key={active} /></div>
+      <div className="progress-track" aria-hidden="true">
+        <span
+          key={`${active}-${isPaused}`}
+          style={{ animationPlayState: isPaused ? "paused" : "running" }}
+        />
+      </div>
 
-      <Footer />
+      <Footer
+        isPaused={isPaused}
+        onToggleSlideshow={() => setIsPaused((paused) => !paused)}
+      />
     </main>
   );
 }
