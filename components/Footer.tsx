@@ -52,7 +52,10 @@ export default function Footer() {
 
         <section className="footer-contact" aria-labelledby="footer-contact-title">
           <h2 id="footer-contact-title">Get in touch</h2>
-          <a className="footer-contact-link" href="tel:+919027811488"><span className="footer-contact-icon"><Phone size={15} /></span><span><small>Call us</small>+91 90278 11488</span></a>
+          <a className="footer-contact-link" href="tel:+919027811488"><span className="footer-contact-icon"><Phone size={15} />
+          </span>
+            <span><small>Call us</small>+91 90278 11488</span>
+          </a>
           <a className="footer-contact-link" href="mailto:info@sdvedutech.in">
             <span
               className="footer-contact-icon"><Mail size={15} /></span><span><small>Email us</small>info@sdvedutech.in</span>

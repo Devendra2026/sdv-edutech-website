@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 // import Footer from "@/components/Footer";
 
 const slides = [
-  { src: "/software.png", mobileSrc: "/software-mobile.png", alt: "Software" },
-  { src: "/sdv.png", mobileSrc: "/sdv-mobile.png", alt: "SDV" },
-  { src: "/gis.png", mobileSrc: "/gis-mobile.png", alt: "GIS" },
+  { src: "/softwarepro.png", mobileSrc: "/software-mobile.png", alt: "Software" },
+  { src: "/sdvpro.png", mobileSrc: "/sdv-mobile.png", alt: "SDV" },
+  { src: "/gispro.png", mobileSrc: "/gis-mobile.png", alt: "GIS" },
   { src: "/sbm.png", mobileSrc: "/sbm-mobile.png", alt: "SBM" },
 ];
 
@@ -54,7 +54,7 @@ export default function HomePage() {
       {slides.map((slide, index) => (
         <div
           className={`slide${active === index ? " slide-active" : ""}`}
-          key={slide.src}
+          key={slide.src} style={{ backgroundImage: `url("${slide.src}")` }}
           aria-hidden={active !== index}
         >
           <picture>
@@ -92,7 +92,7 @@ export default function HomePage() {
       <div className="slide-dots-indicator" aria-label="Slide indicators">
         {slides.map((slide, index) => (
           <button
-            key={slide.src}
+            key={slide.src} style={{ backgroundImage: `url("${slide.src}")` }}
             className={`slide-dot${active === index ? " slide-dot-active" : ""}`}
             onClick={() => setActive(index)}
             aria-label={`Show ${slide.alt} image`}
@@ -108,4 +108,6 @@ export default function HomePage() {
     </main>
   );
 }
+
+
 

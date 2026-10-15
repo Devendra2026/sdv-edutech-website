@@ -1,12 +1,12 @@
 ﻿"use client";
 
 import { useState } from 'react';
-import type { FormEvent } from 'react';
+import type { FormEvent, SyntheticEvent } from 'react';
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     form.reset();

@@ -20,14 +20,14 @@ const contactDetails = [
   },
   {
     icon: '☎',
-    label: 'Direct line',
+    label: 'Call us',
     lines: ['+91 90278 11488'],
     href: 'tel:+91 90278 11488',
   },
   {
     icon: '◷',
-    label: 'Operating hours',
-    lines: ['Monday–Friday: 10:00 AM–6:00 PM', 'Saturday & Sunday: Closed'],
+    label: 'Working hours',
+    lines: ['Monday–Saturday: 10:00 AM–6:00 PM', ' Sunday: Closed'],
   },
 ];
 

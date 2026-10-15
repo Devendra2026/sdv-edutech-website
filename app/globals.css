@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 :root { color-scheme: dark; }
 * { box-sizing: border-box; }
@@ -1978,4 +1978,43 @@ button { color: inherit; font: inherit; }
     animation-duration: 5s !important;
     animation-iteration-count: infinite !important;
   }
+}
+
+/* Show the next homepage section below the hero */
+.showcase {
+  height: 86vh;
+  height: 86svh;
+  max-height: 86svh;
+}
+@media (max-width: 540px) {
+  .showcase {
+    min-height: 86svh;
+    height: 86svh;
+    max-height: 86svh;
+  }
+}
+/* Enforce a shorter homepage hero, including the old mobile full-height rule */
+.showcase {
+  min-height: 75svh !important;
+  height: 75svh !important;
+  max-height: 75svh !important;
+}
+/* Keep the whole slide visible and use a soft, same-image backdrop to fill side space. */
+.showcase { background: #0d1726; }
+.slide { background-color: #0d1726; background-position: center; background-size: cover; }
+.slide::before {
+  position: absolute;
+  z-index: 0;
+  inset: -20px;
+  background-image: inherit;
+  background-position: center;
+  background-size: cover;
+  content: "";
+  filter: blur(12px) brightness(.82);
+  transform: scale(1.03);
+}
+.slide-image {
+  z-index: 1;
+  object-fit: contain !important;
+  object-position: center;
 }
