@@ -2089,3 +2089,7 @@ button { color: inherit; font: inherit; }
 
 @media (prefers-reduced-motion: reduce) { .career-page [class*="animate-[career-"] { animation: none !important; } }
 
+
+.career-fixed-nav { position: fixed !important; top: clamp(14px, 2.5vh, 26px); left: 0; right: 0; z-index: 100 !important; }
+@media (max-width: 540px) { .career-fixed-nav { top: max(0px, env(safe-area-inset-top)); } }
+

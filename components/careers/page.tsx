@@ -72,14 +72,14 @@ export default function CareerPage() {
 
   return (
     <main className="career-page relative">
-      {/* Hero Section */}
-      <section className="career-hero" aria-labelledby="career-title">
-        <header className="showcase-header services-header">
+      <header className="showcase-header services-header career-fixed-nav">
           <a href="/" className="showcase-logo" aria-label="SDV Edutech Homepage">
             <img className="brand-logo" src="/logo.png" alt="SDV Edutech Logo" />
           </a>
           <Navbar />
         </header>
+      {/* Hero Section */}
+      <section className="career-hero" aria-labelledby="career-title">
         <div className="career-orb career-orb-one" />
         <div className="career-orb career-orb-two" />
         <div className="career-grid" />
