@@ -53,12 +53,24 @@ export default function Footer() {
         <section className="footer-contact" aria-labelledby="footer-contact-title">
           <h2 id="footer-contact-title">Get in touch</h2>
           <a className="footer-contact-link" href="tel:+919027811488"><span className="footer-contact-icon"><Phone size={15} /></span><span><small>Call us</small>+91 90278 11488</span></a>
-          <a className="footer-contact-link" href="mailto:info@sdvedutech.in"><span className="footer-contact-icon"><Mail size={15} /></span><span><small>Email us</small>info@sdvedutech.in</span></a>
-          <div className="footer-address"><span className="footer-contact-icon"><MapPin size={15} /></span><span><small>Office</small>STPI Shastri Puram, Agra, Uttar Pradesh</span></div>
-          <div className="footer-address footer-registered"><span className="footer-contact-icon"><MapPin size={15} /></span><span><small>Registered office</small>70, Mittal Colony, Ikon City, Near Maghtai, Agra – 283105</span></div>
+          <a className="footer-contact-link" href="mailto:info@sdvedutech.in">
+            <span
+              className="footer-contact-icon"><Mail size={15} /></span><span><small>Email us</small>info@sdvedutech.in</span>
+          </a>
+          <div className="footer-address">
+            <span className="footer-contact-icon"><MapPin size={15} /></span><span><small>Office</small>STPI Shastri Puram, Agra, Uttar Pradesh</span>
+          </div>
+          <div className="footer-address footer-registered">
+            <span className="footer-contact-icon"><MapPin size={15} />
+            </span>
+            <span><small>Registered office</small>70, Mittal Colony, Ikon City, Near Maghtai, Agra – 283105</span>
+          </div>
         </section>
       </div>
-      <div className="site-footer-bottom"><span>© SDV Edutech Pvt. Ltd. All rights reserved.</span><span>Made for a smarter tomorrow <i aria-hidden="true">✦</i></span></div>
+      <div className="site-footer-bottom">
+        <span>© SDV Edutech Pvt. Ltd. All rights reserved.</span>
+        <span>Made for a smarter tomorrow <i aria-hidden="true">✦</i></span>
+      </div>
     </footer>
   );
 }

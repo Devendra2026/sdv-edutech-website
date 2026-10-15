@@ -5,7 +5,7 @@ const stats = [
   { value: '150+', label: 'Employees' },
   { value: '100+', label: 'Projects' },
   { value: '50+', label: 'Clients' },
-  { value: '5+', label: 'Years experience' },
+  { value: '4+', label: 'Years experience' },
 ];
 
 const features = [
