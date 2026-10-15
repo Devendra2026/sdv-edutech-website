@@ -1,6 +1,8 @@
-import HomePage from "@/components/homepage/page";
-import WhoWeAre from "@/components/whoweare/page";
+﻿import HomePage from "@/components/Home/homepage/page";
+import WhoWeAre from "@/components/Home/whoweare/page";
+import OurClients from "@/components/Home/ourclients/page";  
 import Navbar from "@/components/Navbar";
+import GallerySlider from "@/components/Home/galleryslider/page";
 
 export default function Home() {
   return (
@@ -13,6 +15,10 @@ export default function Home() {
       </header>
       <HomePage />
       <WhoWeAre />
+      <OurClients />
+      <GallerySlider />
     </div>
   );
 }
+
+

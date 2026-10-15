@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 // import Footer from "@/components/Footer";
@@ -101,17 +101,11 @@ export default function HomePage() {
         ))}
       </div>
 
-      <div className="progress-track" aria-hidden="true">
-        <span
-          key={`${active}-${isPaused}`}
-          style={{ animationPlayState: isPaused ? "paused" : "running" }}
-        />
-      </div>
-
-      {/* <Footer
+{/* <Footer
         isPaused={isPaused}
         onToggleSlideshow={() => setIsPaused((paused) => !paused)}
       /> */}
     </main>
   );
 }
+

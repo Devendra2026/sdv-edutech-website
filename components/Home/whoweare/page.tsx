@@ -1,4 +1,5 @@
-import { ArrowUpRight, Award, Globe, MapPin, Users } from 'lucide-react';
+﻿import { ArrowUpRight, Award, Globe, MapPin, Users } from 'lucide-react';
+import WhoHeading from './WhoHeading';
 
 const stats = [
   { value: '150+', label: 'Employees' },
@@ -42,15 +43,13 @@ export default function WhoWeAre() {
 
         <div className="who-intro">
           <div className="who-title-block">
-            <p className="who-overline">SDV EDUTECH PRIVATE LIMITED</p>
-            <h2 id="who-heading">
-              Technology for a smarter, <span>more connected future.</span>
-            </h2>
+            <p className="who-overline who-company-label">SDV EDUTECH PRIVATE LIMITED</p>
+            <WhoHeading />
           </div>
           <div className="who-intro-copy">
             <p className="who-lead">Your ideal partner for technology solutions.</p>
             <p>
-              We bring digital and technology solutions together—from AI-enabled IT systems
+              We bring digital and technology solutions togetherâ€”from AI-enabled IT systems
               and GIS surveying to data digitization, project consultancy, and capacity building.
             </p>
             <a className="who-story-link" href="/about">
@@ -101,3 +100,6 @@ export default function WhoWeAre() {
     </section>
   );
 }
+
+
+

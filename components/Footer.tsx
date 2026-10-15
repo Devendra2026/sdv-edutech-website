@@ -1,92 +1,65 @@
-import React from "react";
+﻿import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 
-interface FooterProps {
-  isPaused: boolean;
-  onToggleSlideshow: () => void;
+const navigation = [
+  { label: "Home", href: "/" },
+  { label: "About us", href: "/about" },
+  { label: "Our clients", href: "/#clients" },
+  { label: "Contact", href: "/contact" },
+];
+
+const socials = [
+  { label: "WhatsApp", href: "https://wa.me/919027811488", icon: "whatsapp" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/", icon: "linkedin" },
+  { label: "Twitter", href: "https://x.com/", icon: "x" },
+];
+
+function SocialMark({ type }: { type: string }) {
+  if (type === "whatsapp") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 .1C5.4.1.1 5.4.1 12c0 2.1.6 4.1 1.6 5.9L0 24l6.3-1.7a11.9 11.9 0 0 0 5.7 1.5h.1c6.6 0 12-5.4 12-12 0-3.2-1.3-6.1-3.6-8.3ZM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.6 9.6 0 1 1 12 21.7Zm5.3-7.2c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z" /></svg>;
+  }
+  if (type === "linkedin") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 2H3.6C2.7 2 2 2.7 2 3.6v16.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V3.6c0-.9-.7-1.6-1.6-1.6ZM8 18H5V9h3v9ZM6.5 7.8A1.8 1.8 0 1 1 6.5 4a1.8 1.8 0 0 1 0 3.7ZM19 18h-3v-4.4c0-1.1 0-2.5-1.5-2.5s-1.8 1.2-1.8 2.4V18h-3V9h2.9v1.2h.1a3.2 3.2 0 0 1 2.8-1.5c3 0 3.5 2 3.5 4.5V18Z" /></svg>;
+  }
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.6 5.6 22H2.4l7.3-8.4L1.8 2h6.5l4.5 6.8L18.9 2Zm-1.1 18h1.7L7.3 3.9H5.5L17.8 20Z" /></svg>;
 }
 
-export default function Footer({ isPaused, onToggleSlideshow }: FooterProps) {
+export default function Footer() {
   return (
-    <footer className="showcase-footer" aria-label="Site footer">
-      {/* Left: Social Icons */}
-      <div className="footer-socials" aria-label="Social media links">
-        <a
-          href="https://twitter.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="social-link"
-          aria-label="Twitter / X"
-          title="Twitter"
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-        </a>
-        <a
-          href="https://linkedin.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="social-link"
-          aria-label="LinkedIn"
-          title="LinkedIn"
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
-            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76m1.39 9.97v-8.37H5.07v8.37h2.78z" />
-          </svg>
-        </a>
-        <a
-          href="https://whatsapp.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="social-link"
-          aria-label="WhatsApp"
-          title="WhatsApp"
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
-            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.19 8.19 0 0 1-5.82 2.42c-1.43 0-2.83-.37-4.07-1.07l-.29-.17-3.12.82.83-3.04-.19-.3a8.21 8.21 0 0 1-1.26-4.48c0-4.54 3.7-8.24 8.24-8.24m4.53 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.23.9 2.42 1.02 2.59.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3" />
-          </svg>
-        </a>
-      </div>
+    <footer className="site-footer">
+      <div className="site-footer-glow" aria-hidden="true" />
+      <div className="site-footer-inner">
+        <section className="footer-brand" aria-label="About SDV Edutech">
+          <a className="footer-brand-link" href="/" aria-label="SDV Edutech home">
+            <img src="/logo.png" alt="SDV Edutech" className="footer-logo" />
+            <span>SDV <b>EDUTECH PVT. LTD.</b></span>
+          </a>
+          <p>Thoughtful technology for smarter learning, stronger communities, and a more connected future.</p>
+          <div className="footer-socials" aria-label="Social media">
+            {socials.map((social) => (
+              <a key={social.label} href={social.href} target="_blank" rel="noreferrer" aria-label={social.label} title={social.label}>
+                <SocialMark type={social.icon} />
+              </a>
+            ))}
+          </div>
+        </section>
 
-      {/* Center: Location */}
-      <div className="footer-location">
-        <svg
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          width="15"
-          height="15"
-          className="location-icon"
-          aria-hidden="true"
-        >
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-        </svg>
-        <span>Agra, Uttar Pradesh</span>
-      </div>
+        <nav className="footer-navigation" aria-label="Footer navigation">
+          <h2>Explore</h2>
+          <ul>
+            {navigation.map((item) => <li key={item.label}><a href={item.href}>{item.label}<ArrowUpRight size={13} aria-hidden="true" /></a></li>)}
+          </ul>
+        </nav>
 
-      <button
-        type="button"
-        className="slider-toggle"
-        onClick={onToggleSlideshow}
-        aria-pressed={isPaused}
-        aria-label={isPaused ? "Resume slideshow" : "Pause slideshow"}
-        title={isPaused ? "Resume slideshow" : "Pause slideshow"}
-      >
-        {isPaused ? (
-          <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true">
-            <path d="M4 2.8a.8.8 0 0 1 1.22-.68l7.1 4.4a1.75 1.75 0 0 1 0 2.96l-7.1 4.4A.8.8 0 0 1 4 13.2z" />
-          </svg>
-        ) : (
-          <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true">
-            <path d="M4 2.5A1.5 1.5 0 0 1 5.5 4v8a1.5 1.5 0 0 1-3 0V4A1.5 1.5 0 0 1 4 2.5m8 0A1.5 1.5 0 0 1 13.5 4v8a1.5 1.5 0 0 1-3 0V4A1.5 1.5 0 0 1 12 2.5" />
-          </svg>
-        )}
-        <span>{isPaused ? "Play" : "Pause"}</span>
-      </button>
-
-      {/* Right: Company Name */}
-      <div className="footer-company">
-        <span>SDV Edutech Private Limited</span>
+        <section className="footer-contact" aria-labelledby="footer-contact-title">
+          <h2 id="footer-contact-title">Get in touch</h2>
+          <a className="footer-contact-link" href="tel:+919027811488"><span className="footer-contact-icon"><Phone size={15} /></span><span><small>Call us</small>+91 90278 11488</span></a>
+          <a className="footer-contact-link" href="mailto:info@sdvedutech.in"><span className="footer-contact-icon"><Mail size={15} /></span><span><small>Email us</small>info@sdvedutech.in</span></a>
+          <div className="footer-address"><span className="footer-contact-icon"><MapPin size={15} /></span><span><small>Office</small>STPI Shastri Puram, Agra, Uttar Pradesh</span></div>
+          <div className="footer-address footer-registered"><span className="footer-contact-icon"><MapPin size={15} /></span><span><small>Registered office</small>70, Mittal Colony, Ikon City, Near Maghtai, Agra – 283105</span></div>
+        </section>
       </div>
+      <div className="site-footer-bottom"><span>© SDV Edutech Pvt. Ltd. All rights reserved.</span><span>Made for a smarter tomorrow <i aria-hidden="true">✦</i></span></div>
     </footer>
   );
 }
+
