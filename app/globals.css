@@ -1228,12 +1228,33 @@ button { color: inherit; font: inherit; }
 }
 
 /* Client section motion; layout and styling use Tailwind utilities in the component. */
+@keyframes tech-card-in {
+  from { opacity: 0; transform: translateY(12px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes tech-bg-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-22px, 18px, 0) scale(1.12); }
+}
+@keyframes clients-bg-pan {
+  from { background-position: 0% 0%; }
+  to { background-position: 100% 100%; }
+}
+@keyframes clients-bg-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: .72; }
+  50% { transform: translate3d(24px, -18px, 0) scale(1.12); opacity: 1; }
+}
 @keyframes clients-enter {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes clients-shimmer {
   to { background-position: 220% center; }
+}
+@keyframes clients-heading-cycle {
+  0%, 20% { opacity: 1; filter: saturate(1); }
+  30%, 70% { opacity: 0; filter: saturate(.5); }
+  80%, 100% { opacity: 1; filter: saturate(1); }
 }
 @media (prefers-reduced-motion: reduce) {
   #clients [class*="animate-"] { animation: none !important; }

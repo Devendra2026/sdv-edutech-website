@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -154,14 +154,14 @@ export default function CareerPage() {
               return (
                 <div 
                   key={card.title}
-                  className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 shadow-[0_10px_34px_rgba(23,56,92,.06)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_20px_45px_rgba(23,56,92,.12)] motion-safe:animate-[career-rise_.65s_ease-out_both]"
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 shadow-[0_10px_34px_rgba(23,56,92,.06)] transition duration-500 ease-out hover:-translate-y-2 hover:border-blue-300 hover:shadow-[0_24px_50px_rgba(23,56,92,.16)] motion-safe:animate-[career-rise_.65s_ease-out_both]"
                 >
                   <div className="relative h-44 w-full overflow-hidden bg-slate-100 sm:h-48">
                     <Image
                       src={card.imagePath}
                       alt={card.title}
                       fill
-                      className="object-cover transition duration-700 group-hover:scale-105"
+                      className="object-cover transition duration-700 ease-out group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
@@ -195,7 +195,7 @@ export default function CareerPage() {
             {openPositions.map((position) => (
               <div 
                 key={position.title}
-                className="group flex flex-col items-start justify-between gap-4 rounded-2xl border border-slate-200/80 bg-white px-5 py-4 shadow-[0_8px_26px_rgba(25,55,85,.05)] transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-[0_14px_34px_rgba(25,55,85,.1)] sm:flex-row sm:items-center motion-safe:animate-[career-rise_.55s_ease-out_both]"
+                className="group flex flex-col items-start justify-between gap-4 rounded-2xl border border-slate-200/80 bg-white px-5 py-4 shadow-[0_8px_26px_rgba(25,55,85,.05)] transition duration-500 ease-out hover:-translate-y-1 hover:border-blue-300 hover:bg-blue-50/40 hover:shadow-[0_18px_40px_rgba(25,55,85,.14)] sm:flex-row sm:items-center motion-safe:animate-[career-rise_.55s_ease-out_both]"
               >
                 <div>
                   <h3 className="text-base font-bold text-slate-900 sm:text-lg">{position.title}</h3>

@@ -40,7 +40,7 @@ export default function ClientPage() {
               <Sparkles size={13} aria-hidden="true" /> TRUSTED PARTNERS
             </span>
             <h2 id="clients-heading" className="mt-4 text-balance text-3xl font-extrabold leading-tight tracking-[-.045em] text-[#122b42] sm:text-4xl lg:text-[2.7rem]">
-              Our <span className="bg-gradient-to-r from-[#176b9c] via-[#197e91] to-[#236b88] bg-[length:220%_auto] bg-clip-text text-transparent motion-safe:animate-[clients-shimmer_8s_linear_infinite]">Trusted Government Clients</span>
+              Our <span className="bg-gradient-to-r from-fuchsia-600 via-rose-500 via-amber-500 to-sky-600 bg-[length:250%_auto] bg-clip-text text-transparent motion-safe:animate-[clients-heading-cycle_4s_ease-in-out_infinite]">Trusted Government Clients</span>
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
               Building better learning and stronger communities through trusted partnerships.

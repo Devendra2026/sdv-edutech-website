@@ -56,8 +56,11 @@ const clients = [
 export default function ClientsPage() {
   return (
     <main className="relative isolate min-h-screen overflow-hidden bg-[#eaf2f8] text-[#142b40]">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(37,99,235,.22),transparent_34%),radial-gradient(ellipse_at_80%_68%,rgba(14,165,233,.19),transparent_32%),linear-gradient(135deg,#eaf2f8_0%,#dfeefa_48%,#eaf2f8_100%)] bg-[length:200%_200%] motion-safe:animate-[clients-bg-pan_18s_ease-in-out_infinite_alternate]" />
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[470px] bg-[radial-gradient(ellipse_at_18%_20%,rgba(83,161,202,.19),transparent_42%),radial-gradient(ellipse_at_88%_70%,rgba(73,146,165,.13),transparent_34%),linear-gradient(135deg,#e4f0f8_0%,#eaf2f8_58%,#e4eef6_100%)]" />
-      <div aria-hidden="true" className="pointer-events-none absolute -left-28 top-36 z-0 h-72 w-72 rounded-full bg-sky-300/15 blur-3xl" />
+      <div aria-hidden="true" className="pointer-events-none absolute -left-28 top-36 z-0 h-72 w-72 rounded-full bg-sky-400/20 blur-3xl motion-safe:animate-[clients-bg-drift_16s_ease-in-out_infinite]" />
+      <div aria-hidden="true" className="pointer-events-none absolute -right-32 top-[42%] z-0 h-96 w-96 rounded-full bg-blue-400/15 blur-3xl motion-safe:animate-[clients-bg-drift_20s_ease-in-out_infinite_reverse]" />
+      <div aria-hidden="true" className="pointer-events-none absolute -bottom-28 left-[28%] z-0 h-80 w-80 rounded-full bg-teal-300/15 blur-3xl motion-safe:animate-[clients-bg-drift_18s_ease-in-out_infinite]" />
 
       <header className="showcase-header services-header">
         <Link href="/" className="showcase-logo" aria-label="SDV Edutech homepage">
@@ -117,19 +120,21 @@ export default function ClientsPage() {
           {clients.map((client, index) => (
             <article
               key={client.name}
-              className="group relative flex min-h-[225px] flex-col items-center overflow-hidden rounded-[24px] border border-slate-200/90 bg-white/90 p-6 text-center shadow-[0_10px_30px_rgba(27,60,88,.07)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-[0_18px_38px_rgba(27,60,88,.13)] focus-within:ring-4 focus-within:ring-sky-100 motion-safe:animate-[clients-enter_.65s_cubic-bezier(.2,.7,.2,1)_both] sm:p-7"
+              className="group relative flex min-h-[225px] flex-col items-center overflow-hidden rounded-[24px] border border-slate-200/90 bg-white/90 p-6 text-center shadow-[0_10px_30px_rgba(27,60,88,.07)] backdrop-blur-sm transition duration-500 ease-out hover:-translate-y-2 hover:border-sky-300 hover:shadow-[0_20px_44px_rgba(27,60,88,.16)] focus-within:ring-4 focus-within:ring-sky-100 motion-safe:animate-[clients-enter_.65s_cubic-bezier(.2,.7,.2,1)_both] sm:p-7"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <span aria-hidden="true" className="absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-sky-300 to-transparent" />
-              <div className="relative mb-5 grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-[22px] border border-slate-100 bg-gradient-to-br from-white to-[#edf4f8] p-3 shadow-[inset_0_1px_3px_rgba(33,73,105,.06)] transition duration-300 group-hover:scale-[1.04] sm:h-28 sm:w-28">
+              <span aria-hidden="true" className="pointer-events-none absolute -right-10 -top-10 z-0 h-36 w-36 rounded-full bg-blue-400/35 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+              <span aria-hidden="true" className="pointer-events-none absolute -left-1/2 top-0 z-0 h-full w-1/3 -skew-x-[20deg] bg-gradient-to-r from-transparent via-blue-400/35 to-transparent opacity-0 transition duration-700 ease-out group-hover:translate-x-[450%] group-hover:opacity-100" />
+              <span aria-hidden="true" className="pointer-events-none absolute inset-x-7 top-0 z-10 h-px bg-gradient-to-r from-transparent via-sky-300 to-transparent" />
+              <div className="relative z-10 mb-5 grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-[22px] border border-slate-100 bg-gradient-to-br from-white to-[#edf4f8] p-3 shadow-[inset_0_1px_3px_rgba(33,73,105,.06)] transition duration-500 ease-out group-hover:scale-[1.08] group-hover:rotate-1 sm:h-28 sm:w-28">
                 <Image src={client.logo} alt={`${client.name} logo`} fill sizes="112px" className="object-contain p-3" />
               </div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#edf5f7] px-2.5 py-1 text-[9px] font-extrabold tracking-[.12em] text-[#286b7d]">
+              <span className="relative z-10 inline-flex items-center gap-1.5 rounded-full bg-[#edf5f7] px-2.5 py-1 text-[9px] font-extrabold tracking-[.12em] text-[#286b7d]">
                 <Building2 size={12} aria-hidden="true" /> GOVERNMENT PARTNER
               </span>
-              <h3 className="mt-3 text-base font-bold leading-snug text-[#1b3349] sm:text-lg">{client.name}</h3>
-              <p className="mt-2 max-w-sm text-xs leading-relaxed text-slate-600 sm:text-sm">{client.description}</p>
-              <a href="/contact" className="mt-auto inline-flex items-center gap-1.5 pt-5 text-xs font-bold text-[#246a8a] transition hover:gap-2.5 hover:text-[#164e6c] focus-visible:rounded focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-100" aria-label={`Discuss a partnership with ${client.name}`}>
+              <h3 className="relative z-10 mt-3 text-base font-bold leading-snug text-[#1b3349] sm:text-lg">{client.name}</h3>
+              <p className="relative z-10 mt-2 max-w-sm text-xs leading-relaxed text-slate-600 sm:text-sm">{client.description}</p>
+              <a href="/contact" className="relative z-10 mt-auto inline-flex items-center gap-1.5 pt-5 text-xs font-bold text-[#246a8a] transition hover:gap-2.5 hover:text-[#164e6c] focus-visible:rounded focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-100" aria-label={`Discuss a partnership with ${client.name}`}>
                 Discuss a partnership <ArrowUpRight size={14} aria-hidden="true" />
               </a>
             </article>
