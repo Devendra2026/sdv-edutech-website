@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 
 const slides = [
   { src: "/softwarepro.png", mobileSrc: "/software-mobile.png", alt: "Software" },
-  { src: "/sdvpro.png", mobileSrc: "/sdv-mobile.png", alt: "SDV" },
+  { src: "/companypro.png", mobileSrc: "/companymobile.png", alt: "SDV" },
   { src: "/gispro.png", mobileSrc: "/gis-mobile.png", alt: "GIS" },
   { src: "/sbm.png", mobileSrc: "/sbm-mobile.png", alt: "SBM" },
+  { src: "/consultingservice.png", mobileSrc: "/consulting-mobile.png", alt: "Consulting" },
 ];
 
 export default function HomePage() {
