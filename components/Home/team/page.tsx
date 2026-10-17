@@ -18,7 +18,7 @@ const stepsData: StepItem[] = [
   {
     id: 2,
     title: 'Discuss requirements',
-    description: 'We’ll schedule one or more calls to discuss and clarify the details.',
+    description: 'We will schedule one or more calls to discuss and clarify the details.',
     icon: 'chat',
   },
   {
