@@ -61,7 +61,7 @@ export default function Footer() {
               className="footer-contact-icon"><Mail size={15} /></span><span><small>Email us</small>info@sdvedutech.in</span>
           </a>
           <div className="footer-address">
-            <span className="footer-contact-icon"><MapPin size={15} /></span><span><small>Office</small>STPI Shastri Puram, Agra, Uttar Pradesh</span>
+            <span className="footer-contact-icon"><MapPin size={15} /></span><span><small>Office</small>01, FF, STPI IT Park Sector D, Shastri Puram, Sikandra, Agra, Uttar Pradesh</span>
           </div>
           <div className="footer-address footer-registered">
             <span className="footer-contact-icon"><MapPin size={15} />

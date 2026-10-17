@@ -1,15 +1,13 @@
 ﻿"use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Award, BadgeCheck, Maximize2, X } from "lucide-react";
+import { Award, BadgeCheck, Maximize2, X } from "lucide-react";
 
 const recognitions = [
-  { title: "MSME Certified", category: "Government of India", image: "" },
-  { title: "Enterprise Partner", category: "Strategic Partnership", image: "" },
-  { title: "Technology Leader", category: "Innovation & Excellence", image: "" },
-  { title: "Quality Assured", category: "Quality Management", image: "" },
-  { title: "Trusted Organization", category: "Industry Recognition", image: "" },
+  { title: "MSME Certified", category: "Government of India", image: "/msme.jpeg" },
+  { title: "Compilance Certified", category: "Strategic Partnership", image: "/compilance.jpeg" },
+  { title: "ISO Certified", category: "Innovation & Excellence", image: "/iso.jpg" },
 ];
 
 function RecognitionArtwork() {
@@ -24,43 +22,7 @@ function RecognitionArtwork() {
 }
 
 export default function GallerySlider() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const move = useCallback((direction: number) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.querySelector<HTMLElement>(".recognition-card");
-    if (!card) return;
-    const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 20;
-    const maxScroll = track.scrollWidth - track.clientWidth;
-    const nextScroll = track.scrollLeft + direction * (card.offsetWidth + gap);
-    if (direction > 0 && track.scrollLeft >= maxScroll - 4) {
-      track.scrollTo({ left: 0, behavior: "smooth" });
-    } else if (direction < 0 && track.scrollLeft <= 4) {
-      track.scrollTo({ left: maxScroll, behavior: "smooth" });
-    } else {
-      track.scrollTo({ left: Math.max(0, Math.min(nextScroll, maxScroll)), behavior: "smooth" });
-    }
-  }, []);
-
-  const select = (index: number) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.querySelector<HTMLElement>(".recognition-card");
-    if (!card) return;
-    const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 20;
-    const maxScroll = track.scrollWidth - track.clientWidth;
-    track.scrollTo({ left: Math.min(index * (card.offsetWidth + gap), maxScroll), behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    if (isPaused || selected !== null) return;
-    const timer = window.setInterval(() => move(1), 1000);
-    return () => window.clearInterval(timer);
-  }, [isPaused, selected, move]);
 
   useEffect(() => {
     if (selected === null) return;
@@ -80,29 +42,8 @@ export default function GallerySlider() {
           <p>Milestones that reflect the trust, quality, and care behind every solution.</p>
         </div>
 
-        <div
-          className="recognition-carousel"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onFocusCapture={() => setIsPaused(true)}
-          onBlurCapture={(event) => {
-            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsPaused(false);
-          }}
-        >
-          <button className="recognition-arrow recognition-arrow-prev" type="button" onClick={() => move(-1)} aria-label="Previous recognition">
-            <ArrowLeft size={19} aria-hidden="true" />
-          </button>
-          <div
-            className="recognition-track"
-            ref={trackRef}
-            onScroll={(event) => {
-              const track = event.currentTarget;
-              const card = track.querySelector<HTMLElement>(".recognition-card");
-              if (!card) return;
-              const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 20;
-              setActive(Math.round(track.scrollLeft / (card.offsetWidth + gap)));
-            }}
-          >
+        <div className="recognition-carousel">
+          <div className="recognition-track">
             {recognitions.map((item, index) => (
               <article className="recognition-card" key={item.title}>
                 <div className="recognition-art">
@@ -121,26 +62,6 @@ export default function GallerySlider() {
               </article>
             ))}
           </div>
-          <button className="recognition-arrow recognition-arrow-next" type="button" onClick={() => move(1)} aria-label="Next recognition">
-            <ArrowRight size={19} aria-hidden="true" />
-          </button>
-        </div>
-
-        <div className="recognition-controls">
-          <div className="recognition-dots" aria-label="Choose recognition slide">
-            {recognitions.map((item, index) => (
-              <button
-                key={item.title}
-                type="button"
-                className={`recognition-dot${active === index ? " recognition-dot-active" : ""}`}
-                aria-label={`Show ${item.title}`}
-                aria-current={active === index ? "true" : undefined}
-                onClick={() => select(index)}
-              />
-            ))}
-          </div>
-          <span className="recognition-count">{String(Math.min(active + 1, recognitions.length)).padStart(2, "0")} <i>/</i> {String(recognitions.length).padStart(2, "0")}</span>
-          <span className="recognition-autoplay"><span /> Auto play</span>
         </div>
       </div>
 

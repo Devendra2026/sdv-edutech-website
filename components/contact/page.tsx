@@ -5,7 +5,7 @@ const contactDetails = [
   {
     icon: '⌖',
     label: 'Visit our office',
-    lines: ['Software Technology Parks of India (STPI), Agra', 'STPI Shastri Puram, Agra, Uttar Pradesh']
+    lines: ['01, FF, STPI IT Park Sector D, Shastri Puram,Sikandra, Agra, Uttar Pradesh']
   },
   {
     icon: '⌖',

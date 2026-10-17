@@ -3,6 +3,7 @@ import WhoWeAre from "@/components/Home/whoweare/page";
 import OurClients from "@/components/Home/ourclients/page";  
 import Navbar from "@/components/Navbar";
 import TechStackSection from "@/components/Home/techstack/page";
+import Team from "@/components/Home/team/page";
 import GallerySlider from "@/components/Home/galleryslider/page";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <WhoWeAre />
       <OurClients />
       <TechStackSection />
+      <Team />
       <GallerySlider />
     </div>
   );
