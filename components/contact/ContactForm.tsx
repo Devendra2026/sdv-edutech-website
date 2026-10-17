@@ -1,17 +1,48 @@
-﻿"use client";
+﻿
+
+"use client";
 
 import { useState } from 'react';
-import type { FormEvent, SyntheticEvent } from 'react';
+import type { FormEvent } from 'react';
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(event: SyntheticEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setIsSubmitting(true);
+
     const form = event.currentTarget;
-    form.reset();
-    setSubmitted(true);
-    window.setTimeout(() => setSubmitted(false), 1000);
+    const formData = new FormData(form);
+
+    // Dynamic Email Subject Line for Contact Form
+    formData.append("_subject", "New Contact Form Message - SDV Edutech");
+
+    try {
+      // Formspree Contact Form Endpoint
+      const response = await fetch("https://formspree.io/f/xzedobor", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        form.reset();
+        setSubmitted(true);
+        window.setTimeout(() => setSubmitted(false), 4000);
+      } else {
+        const data = await response.json();
+        alert(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Submission failed. Please check your network connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -56,11 +87,11 @@ export default function ContactForm() {
           <span>What can we help with?</span>
           <select name="service" defaultValue="">
             <option value="" disabled>Select a service</option>
-            <option>Custom software</option>
-            <option>GIS and digital surveys</option>
-            <option>Smart education technology</option>
-            <option>Internship Courses</option>
-            <option>Other enquiry</option>
+            <option value="Custom software">Custom software</option>
+            <option value="GIS and digital surveys">GIS and digital surveys</option>
+            <option value="Smart education technology">Smart education technology</option>
+            <option value="Internship Courses">Internship Courses</option>
+            <option value="Other enquiry">Other enquiry</option>
           </select>
         </label>
         <label className="contact-field contact-field-full">
@@ -70,12 +101,11 @@ export default function ContactForm() {
       </div>
 
       <div className="contact-form-bottom">
-        <button className="contact-submit" type="submit">
-          Send message
+        <button className="contact-submit" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Sending..." : "Send message"}
           <span aria-hidden="true">→</span>
         </button>
       </div>
     </form>
   );
 }
-

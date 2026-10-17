@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 
 const navItems = [
+   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Clients", href: "/clients" },

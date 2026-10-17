@@ -1,12 +1,12 @@
 ﻿'use client';
 
-import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
+import { useState, type FormEvent } from 'react';
 import { 
   ArrowDownRight, 
-  ArrowUpRight, 
+  ArrowUpRight,
   BriefcaseBusiness, 
   Code2, 
   Layers3, 
@@ -15,10 +15,9 @@ import {
   UsersRound, 
   TrendingUp, 
   Wallet, 
-  Users, 
-  X, 
-  Upload, 
-  ChevronRight 
+  Users,
+  X,
+  ChevronRight
 } from 'lucide-react';
 
 const teams = [
@@ -60,6 +59,7 @@ const openPositions = [
 export default function CareerPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPosition, setSelectedPosition] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleOpenForm = (positionTitle = '') => {
     setSelectedPosition(positionTitle);
@@ -70,14 +70,50 @@ export default function CareerPage() {
     setIsModalOpen(false);
   };
 
+  const handleApplicationSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    
+    formData.append(
+      '_subject', 
+      `New Job Application: ${selectedPosition || 'General Application'} - SDV Edutech`
+    );
+
+    try {
+      const response = await fetch('https://formspree.io/f/mnpjwqgk', {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        alert('Your application is successfully submitted');
+        form.reset();
+        handleCloseForm();
+      } else {
+        const data = await response.json();
+        alert(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('Submission failed. Please check your network connection.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="career-page relative">
       <header className="showcase-header services-header career-fixed-nav">
-          <a href="/" className="showcase-logo" aria-label="SDV Edutech Homepage">
-            <img className="brand-logo" src="/logo.png" alt="SDV Edutech Logo" />
-          </a>
-          <Navbar />
-        </header>
+        <a href="/" className="showcase-logo" aria-label="SDV Edutech Homepage">
+          <img className="brand-logo" src="/logo.png" alt="SDV Edutech Logo" />
+        </a>
+        <Navbar />
+      </header>
+
       {/* Hero Section */}
       <section className="career-hero" aria-labelledby="career-title">
         <div className="career-orb career-orb-one" />
@@ -87,55 +123,114 @@ export default function CareerPage() {
         <div className="career-inner">
           <div className="career-copy">
             <nav className="career-breadcrumb" aria-label="Breadcrumb">
-              <Link href="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Careers</span>
+              <Link href="/">Home</Link>
+              <span aria-hidden="true">/</span>
+              <span aria-current="page">Careers</span>
             </nav>
 
-            <div className="career-kicker"><Sparkles size={14} /> GROW WITH US</div>
-            <h1 id="career-title">Build work that<br /><span>moves the future.</span></h1>
+            <div className="career-kicker">
+              <Sparkles size={14} /> GROW WITH US
+            </div>
+            
+            <h1 id="career-title">
+              Build work that<br />
+              <span>moves the future.</span>
+            </h1>
+
             <p className="career-description">
               Bring your ideas to projects that make a real difference. Explore GIS, software, and digital transformation with a team that keeps learning.
             </p>
 
             <div className="career-actions">
-              <button onClick={() => handleOpenForm()} className="career-primary flex items-center gap-2 cursor-pointer">
+              <button 
+                onClick={() => handleOpenForm()} 
+                className="career-primary flex items-center gap-2 cursor-pointer"
+              >
                 Talk to our team <ArrowUpRight size={17} />
               </button>
-              <a className="career-secondary" href="#career-values">Discover life at SDV <ArrowDownRight size={16} /></a>
+              
+              <a className="career-secondary" href="#career-values">
+                Discover life at SDV <ArrowDownRight size={16} />
+              </a>
             </div>
 
             <div className="career-traits" aria-label="Our areas of work">
-              {teams.map(({ icon: Icon, label }) => <span key={label}><Icon size={15} />{label}</span>)}
+              {teams.map(({ icon: Icon, label }) => (
+                <span key={label}>
+                  <Icon size={15} />
+                  {label}
+                </span>
+              ))}
             </div>
           </div>
 
           <div className="career-visual" aria-label="A glimpse of working at SDV Edutech">
-            <Image src="/carrer.avif" alt="Career opportunities at SDV Edutech" fill priority sizes="(max-width: 900px) 100vw, 520px" className="career-hero-image" />
+            <Image 
+              src="/carrer.avif" 
+              alt="Career opportunities at SDV Edutech" 
+              fill 
+              priority 
+              sizes="(max-width: 900px) 100vw, 520px" 
+              className="career-hero-image" 
+            />
             <div className="career-visual-glow" />
-            <div className="career-visual-top"><span className="career-live-dot" /> PEOPLE. PURPOSE. PROGRESS.</div>
+            <div className="career-visual-top">
+              <span className="career-live-dot" /> PEOPLE. PURPOSE. PROGRESS.
+            </div>
+
             <div className="career-illustration" aria-hidden="true">
               <div className="career-planet" />
-              <div className="career-orbit career-orbit-a" /><div className="career-orbit career-orbit-b" />
+              <div className="career-orbit career-orbit-a" />
+              <div className="career-orbit career-orbit-b" />
+              
               <div className="career-window">
-                <div className="career-window-bar"><i /><i /><i /><span>SDV / IDEAS IN MOTION</span></div>
+                <div className="career-window-bar">
+                  <i /><i /><i />
+                  <span>SDV / IDEAS IN MOTION</span>
+                </div>
                 <div className="career-window-content">
-                  <div className="career-code-lines"><b /><b /><b /><b /><b /><b /></div>
-                  <div className="career-map"><span /><span /><span /><span /><span /></div>
+                  <div className="career-code-lines">
+                    <b /><b /><b /><b /><b /><b />
+                  </div>
+                  <div className="career-map">
+                    <span /><span /><span /><span /><span />
+                  </div>
                 </div>
               </div>
-              <div className="career-float career-float-one"><Code2 size={17} /><span>Build with purpose</span></div>
-              <div className="career-float career-float-two"><MapPin size={17} /><span>Make an impact</span></div>
-              <div className="career-star career-star-one">&#10022;</div><div className="career-star career-star-two">&#10038;</div>
+
+              <div className="career-float career-float-one">
+                <Code2 size={17} />
+                <span>Build with purpose</span>
+              </div>
+              <div className="career-float career-float-two">
+                <MapPin size={17} />
+                <span>Make an impact</span>
+              </div>
+
+              <div className="career-star career-star-one">&#10022;</div>
+              <div className="career-star career-star-two">&#10038;</div>
             </div>
-            <div className="career-visual-caption"><div><BriefcaseBusiness size={17} /><span>Good work. Good people.</span></div><span>YOUR NEXT CHAPTER</span></div>
+
+            <div className="career-visual-caption">
+              <div>
+                <BriefcaseBusiness size={17} />
+                <span>Good work. Good people.</span>
+              </div>
+              <span>YOUR NEXT CHAPTER</span>
+            </div>
           </div>
         </div>
 
-        <a className="career-scroll" href="#career-values"><span /> Scroll to explore</a>
+        <a className="career-scroll" href="#career-values">
+          <span /> Scroll to explore
+        </a>
       </section>
 
       {/* Ticker / Values highlight bar */}
       <section className="career-values" id="career-values" aria-label="Working at SDV Edutech">
-        <span>CURIOUS MINDS</span><i /> <span>MEANINGFUL PROJECTS</span><i /> <span>ROOM TO GROW</span>
+        <span>CURIOUS MINDS</span><i /> 
+        <span>MEANINGFUL PROJECTS</span><i /> 
+        <span>ROOM TO GROW</span>
       </section>
 
       {/* Why You'll Love Working Here Section */}
@@ -144,6 +239,7 @@ export default function CareerPage() {
           <span className="inline-flex items-center rounded-full border border-blue-100 bg-white/80 px-3 py-1.5 text-[10px] font-bold tracking-[.18em] text-blue-700 shadow-sm">
             WHY SDV
           </span>
+
           <h2 className="mt-3 mb-3 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
             Why You&apos;ll Love Working Here
           </h2>
@@ -203,8 +299,8 @@ export default function CareerPage() {
                     {position.department} &middot; {position.location}
                   </p>
                 </div>
-                <button
-                  onClick={() => handleOpenForm(position.title)}
+                <button 
+                  onClick={() => handleOpenForm(position.title)} 
                   className="inline-flex items-center gap-2 rounded-xl bg-[#176da4] px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-blue-900/10 transition hover:-translate-y-0.5 hover:bg-[#125887] hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 whitespace-nowrap cursor-pointer"
                 >
                   Apply now
@@ -216,10 +312,10 @@ export default function CareerPage() {
           <div className="mt-8 text-sm text-slate-600">
             Don&apos;t see a fit?{' '}
             <button 
-              onClick={() => handleOpenForm('General Application')}
+              onClick={() => handleOpenForm('General Application')} 
               className="text-blue-600 font-semibold hover:underline cursor-pointer"
             >
-              Send us your resume
+              Send us your application
             </button>
           </div>
         </div>
@@ -227,170 +323,143 @@ export default function CareerPage() {
 
       {/* Application Form Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-slate-950/60 p-3 backdrop-blur-md sm:p-6 motion-safe:animate-[career-fade-in_.2s_ease-out_both]" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) handleCloseForm(); }}>
-          <div role="dialog" aria-modal="true" aria-labelledby="application-title" className="my-5 w-full max-w-2xl overflow-hidden rounded-[26px] border border-white/70 bg-white shadow-[0_32px_100px_rgba(2,18,38,.35)] motion-safe:animate-[career-modal-in_.35s_cubic-bezier(.2,.8,.2,1)_both]">
-            
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-slate-950/60 p-3 backdrop-blur-md sm:p-6 motion-safe:animate-[career-fade-in_.2s_ease-out_both]" 
+          role="presentation" 
+          onClick={(event) => { if (event.target === event.currentTarget) handleCloseForm(); }}
+        >
+          <div 
+            role="dialog" 
+            aria-modal="true" 
+            aria-labelledby="application-title" 
+            className="my-5 w-full max-w-2xl overflow-hidden rounded-[26px] border border-white/70 bg-white shadow-[0_32px_100px_rgba(2,18,38,.35)] motion-safe:animate-[career-modal-in_.35s_cubic-bezier(.2,.8,.2,1)_both]"
+          >
             {/* Modal Header */}
             <div className="flex items-start justify-between gap-4 border-b border-slate-100 bg-gradient-to-r from-sky-50 via-white to-indigo-50/70 px-5 py-5 sm:px-8 sm:py-6">
               <div>
                 <button 
-                  onClick={handleCloseForm}
+                  onClick={handleCloseForm} 
                   className="mb-2 inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-bold text-blue-700 transition hover:bg-blue-50 cursor-pointer"
                 >
                   <ChevronRight size={14} className="rotate-180" /> Back to Careers
                 </button>
-                <h2 id="application-title" className="text-2xl font-extrabold tracking-tight text-slate-950 sm:text-3xl">Apply Now</h2>
+                <h2 id="application-title" className="text-2xl font-extrabold tracking-tight text-slate-950 sm:text-3xl">
+                  Apply Now
+                </h2>
                 <p className="mt-1 max-w-lg text-xs leading-relaxed text-slate-600 sm:text-sm">
                   Join our team and help transform enterprises through innovative technology.
                 </p>
               </div>
+
               <button 
-                onClick={handleCloseForm}
-                className="rounded-xl border border-slate-200 p-2.5 text-slate-500 transition hover:border-slate-300 hover:bg-white hover:text-slate-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
+                onClick={handleCloseForm} 
+                className="rounded-xl border border-slate-200 p-2.5 text-slate-500 transition hover:border-slate-300 hover:bg-white hover:text-slate-800" 
                 aria-label="Close modal"
               >
                 <X size={20} />
               </button>
             </div>
 
-            {/* Modal Body / Form */}
-            <form onSubmit={(e) => { e.preventDefault(); alert('Application submitted successfully!'); handleCloseForm(); }} className="max-h-[72vh] space-y-6 overflow-y-auto px-5 py-5 sm:px-8 sm:py-7">
-              
+            {/* Modal Form */}
+            <form onSubmit={handleApplicationSubmit} className="max-h-[72vh] space-y-6 overflow-y-auto px-5 py-5 sm:px-8 sm:py-7">
               {/* Personal Information */}
               <div>
-                <h3 className="mb-3 flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[.16em] text-slate-500 before:h-px before:w-5 before:bg-blue-400">
+                <h3 className="mb-3 text-[10px] font-extrabold uppercase tracking-[.16em] text-slate-500">
                   Personal Information
                 </h3>
-                
                 <div className="space-y-4">
-                  <div>
-                    <label className="mb-1.5 block text-xs font-bold text-slate-700">Full name *</label>
+                  <input 
+                    name="name" 
+                    type="text" 
+                    required 
+                    placeholder="Full name *" 
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800" 
+                  />
+                  
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <input 
-                      type="text" 
+                      name="email" 
+                      type="email" 
                       required 
-                      placeholder="Enter your full name"
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
+                      placeholder="Email *" 
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800" 
                     />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="mb-1.5 block text-xs font-bold text-slate-700">Email *</label>
-                      <input 
-                        type="email" 
-                        required 
-                        placeholder="name@example.com"
-                        className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
-                      />
-                    </div>
-                    <div>
-                      <label className="mb-1.5 block text-xs font-bold text-slate-700">Phone *</label>
-                      <input 
-                        type="tel" 
-                        required 
-                        placeholder="+91 98765 43210"
-                        className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="mb-1.5 block text-xs font-bold text-slate-700">LinkedIn profile</label>
                     <input 
-                      type="url" 
-                      placeholder="https://linkedin.com/in/username"
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
+                      name="phone" 
+                      type="tel" 
+                      required 
+                      placeholder="Phone *" 
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800" 
                     />
                   </div>
+
+                  <input 
+                    name="linkedin" 
+                    type="url" 
+                    placeholder="LinkedIn profile" 
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800" 
+                  />
                 </div>
               </div>
 
               {/* Position Details */}
               <div>
-                <h3 className="mb-3 flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[.16em] text-slate-500 before:h-px before:w-5 before:bg-blue-400">
+                <h3 className="mb-3 text-[10px] font-extrabold uppercase tracking-[.16em] text-slate-500">
                   Position Details
                 </h3>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <select 
+                    name="position" 
+                    value={selectedPosition} 
+                    onChange={(event) => setSelectedPosition(event.target.value)} 
+                    required 
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800"
+                  >
+                    <option value="" disabled>Select a position</option>
+                    {openPositions.map((position) => (
+                      <option key={position.title} value={position.title}>
+                        {position.title}
+                      </option>
+                    ))}
+                    <option value="General Application">General Application / Send Details</option>
+                  </select>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="mb-1.5 block text-xs font-bold text-slate-700">Position *</label>
-                    <select 
-                      value={selectedPosition}
-                      onChange={(e) => setSelectedPosition(e.target.value)}
-                      required
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
-                    >
-                      <option value="" disabled>Select a position</option>
-                      {openPositions.map((pos) => (
-                        <option key={pos.title} value={pos.title}>{pos.title}</option>
-                      ))}
-                      <option value="General Application">General Application / Send Resume</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="mb-1.5 block text-xs font-bold text-slate-700">Experience *</label>
-                    <select 
-                      defaultValue=""
-                      required
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
-                    >
-                      <option value="" disabled>Select range</option>
-                      <option value="0-1">0 - 1 Years</option>
-                      <option value="1-3">1 - 3 Years</option>
-                      <option value="3-5">3 - 5 Years</option>
-                      <option value="5+">5+ Years</option>
-                    </select>
-                  </div>
+                  <select 
+                    name="experience" 
+                    defaultValue="" 
+                    required 
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800"
+                  >
+                    <option value="" disabled>Select experience</option>
+                    <option value="0-1">0 - 1 Years</option>
+                    <option value="1-3">1 - 3 Years</option>
+                    <option value="3-5">3 - 5 Years</option>
+                    <option value="5+">5+ Years</option>
+                  </select>
                 </div>
               </div>
 
               {/* Application Details */}
               <div>
-                <h3 className="mb-3 flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[.16em] text-slate-500 before:h-px before:w-5 before:bg-blue-400">
+                <h3 className="mb-3 text-[10px] font-extrabold uppercase tracking-[.16em] text-slate-500">
                   Application Details
                 </h3>
-
-                <div className="space-y-4">
-                  <div>
-                    <label className="mb-1.5 block text-xs font-bold text-slate-700">Resume / CV *</label>
-                    <label className="group flex min-h-32 w-full cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50/80 px-4 py-5 text-center transition hover:border-blue-400 hover:bg-blue-50/60 focus-within:ring-4 focus-within:ring-blue-100">
-                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                        <Upload size={22} className="text-slate-400 mb-2" />
-                        <p className="text-xs text-slate-500 group-hover:text-blue-700">PDF, DOC up to 10MB</p>
-                      </div>
-                      <input type="file" required accept=".pdf,.doc,.docx" className="sr-only" />
-                    </label>
-                  </div>
-
-                  <div>
-                    <label className="mb-1.5 block text-xs font-bold text-slate-700">Cover letter</label>
-                    <textarea 
-                      rows={3}
-                      placeholder="Write a brief cover letter..."
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100 resize-none"
-                    />
-                  </div>
-                </div>
+                <textarea 
+                  name="cover_letter" 
+                  rows={4} 
+                  placeholder="Write a brief note or cover letter introducing yourself..." 
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800" 
+                />
               </div>
 
-              {/* Submit Button */}
-              <div className="pt-2">
-                <button 
-                  type="submit"
-                  className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#176da4] to-[#304fa4] py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-900/15 transition hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 cursor-pointer"
-                >
-                  Submit application
-                </button>
-                <p className="mt-4 text-center text-[11px] leading-relaxed text-slate-500">
-                  By submitting, you agree to our{' '}
-                  <a href="/terms" className="underline hover:text-slate-600">terms</a> and{' '}
-                  <a href="/privacy" className="underline hover:text-slate-600">privacy policy</a>.
-                </p>
-              </div>
-
+              <button 
+                type="submit" 
+                disabled={isSubmitting} 
+                className="w-full rounded-xl bg-gradient-to-r from-[#176da4] to-[#304fa4] py-3.5 text-sm font-bold text-white disabled:opacity-50 cursor-pointer"
+              >
+                {isSubmitting ? 'Submitting application...' : 'Submit application'}
+              </button>
             </form>
-
           </div>
         </div>
       )}
