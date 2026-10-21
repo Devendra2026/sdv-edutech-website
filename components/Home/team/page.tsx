@@ -30,7 +30,7 @@ const stepsData: StepItem[] = [
   {
     id: 4,
     title: 'Kick off the project',
-    description: 'Your team starts working on your project.',
+    description: 'Your team starts to work on your project.',
     icon: 'globe',
   },
 ];

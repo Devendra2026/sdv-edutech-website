@@ -234,7 +234,7 @@ export default function CareerPage() {
       </section>
 
       {/* Why You'll Love Working Here Section */}
-      <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#e7f1fa] via-[#e8edf9] to-[#dcecf6] px-5 py-14 sm:px-8 md:px-12 md:py-16">
+      <section className="relative w-full overflow-hidden bg-linear-to-br from-[#e7f1fa] via-[#e8edf9] to-[#dcecf6] px-5 py-14 sm:px-8 md:px-12 md:py-16">
         <div className="mx-auto max-w-6xl text-center">
           <span className="inline-flex items-center rounded-full border border-blue-100 bg-white/80 px-3 py-1.5 text-[10px] font-bold tracking-[.18em] text-blue-700 shadow-sm">
             WHY SDV
@@ -261,7 +261,7 @@ export default function CareerPage() {
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
-                  <div className="flex flex-grow flex-col p-5 sm:p-6">
+                  <div className="flex grow flex-col p-5 sm:p-6">
                     <div className="mb-3 flex items-center gap-2 text-blue-700">
                       <IconComponent size={20} />
                       <h3 className="text-base font-bold text-slate-900 sm:text-lg">{card.title}</h3>
@@ -335,7 +335,7 @@ export default function CareerPage() {
             className="my-5 w-full max-w-2xl overflow-hidden rounded-[26px] border border-white/70 bg-white shadow-[0_32px_100px_rgba(2,18,38,.35)] motion-safe:animate-[career-modal-in_.35s_cubic-bezier(.2,.8,.2,1)_both]"
           >
             {/* Modal Header */}
-            <div className="flex items-start justify-between gap-4 border-b border-slate-100 bg-gradient-to-r from-sky-50 via-white to-indigo-50/70 px-5 py-5 sm:px-8 sm:py-6">
+            <div className="flex items-start justify-between gap-4 border-b border-slate-100 bg-linear-to-r from-sky-50 via-white to-indigo-50/70 px-5 py-5 sm:px-8 sm:py-6">
               <div>
                 <button 
                   onClick={handleCloseForm} 
@@ -455,7 +455,7 @@ export default function CareerPage() {
               <button 
                 type="submit" 
                 disabled={isSubmitting} 
-                className="w-full rounded-xl bg-gradient-to-r from-[#176da4] to-[#304fa4] py-3.5 text-sm font-bold text-white disabled:opacity-50 cursor-pointer"
+                className="w-full rounded-xl bg-linear-to-r from-[#176da4] to-[#304fa4] py-3.5 text-sm font-bold text-white disabled:opacity-50 cursor-pointer"
               >
                 {isSubmitting ? 'Submitting application...' : 'Submit application'}
               </button>
