@@ -4,6 +4,7 @@ import OurClients from "@/components/Home/ourclients/page";
 import Navbar from "@/components/Navbar";
 import TechStackSection from "@/components/Home/techstack/page";
 import Team from "@/components/Home/team/page";
+import TransparentPricing from "@/components/Home/transparentpricing/page"; 
 import GallerySlider from "@/components/Home/galleryslider/page";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
       <OurClients />
       <TechStackSection />
       <Team />
+      <TransparentPricing />
       <GallerySlider />
     </div>
   );
