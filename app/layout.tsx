@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SDV Edutech | Learn, Build, Grow",
+  title: "SDV Edutech | Learn, Build",
   description: "Explore software, SDV, and GIS with SDV Edutech.",
 };
 
